@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kuis berhadiah</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="popup">
+            <label for="nameInput">Masukkan nama kamu,harus nama yang asli ya😉</label>
+            <input type="text" id="nameInput" placeholder="Nama">
+            <button onclick="submitName()">Submit</button>
+            <p class="celeng">©A.H 5.1 sdn bhd & copilot</p>
+        </div>
+        <h1 id="greeting">Hai, there!</h1>
+        <p>Aku sudah lama menyimpan perasaan ini(dari kls 7 itupun kalau kamu menyadarinya), dan aku ingin memberitahumu bahwa aku sangat suka sama kamu.jika kamu suka silahkan klik tombol di bawah</p>
+        <p>disclaimer:saya tidak memaksa kamu, saya hanya ingin memastikan agar kedepannya saya tidak melakukan hal seperti ini lagi kepada anda</p>
+        <a href="https://api.whatsapp.com/send?phone=+62 858-7665-8074&text=Aku%20%20suka%20kamu!" class="btn">Aku juga suka kamu!</a>
+        <p class="shit">jika kamu menghargai saya mohon jangan menyebarluaskan informasi pada website ini</p>
+        <p class="celeng">©A.H 5.1 sdn bhd & copilot</p>
+    </div>
+
+    <script>
+        function submitName() {
+            const name = document.getElementById('nameInput').value;
+            if(name) {
+                document.getElementById('greeting').innerText = `Hai, ${name}!`;
+                document.querySelector('.popup').style.display = 'none';
+            } else {
+                alert('Tolong masukkan nama Anda!');
+            }
+        }
+    </script>
+</body>
+</html>
