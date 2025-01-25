@@ -7,8 +7,8 @@
     <style>
         body {
             margin: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fde2e4, #ffc9de);
             color: #444;
             overflow: hidden;
         }
@@ -20,7 +20,7 @@
             height: 100vh;
             text-align: center;
             flex-direction: column;
-            animation: scaleFadeIn 1.5s ease-in-out;
+            animation: scaleFadeIn 1.2s cubic-bezier(0.4, 0.0, 0.2, 1);
         }
 
         .input-container {
@@ -33,7 +33,7 @@
             border: 1px solid #ddd;
             border-radius: 25px;
             width: 300px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         button {
@@ -105,11 +105,22 @@
         @keyframes scaleFadeIn {
             from {
                 opacity: 0;
-                transform: scale(0.8);
+                transform: scale(0.95);
             }
             to {
                 opacity: 1;
                 transform: scale(1);
+            }
+        }
+
+        @keyframes floatingHearts {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1.5);
+                opacity: 0;
             }
         }
 
@@ -154,7 +165,8 @@
             Udah lama banget aku nyimpan ini sejak kelas 7(entah kamu tau atau tidak) kalau sebenarnya aku suka sama kamu,Mungkin kamu pikir aku suka sama kamu cuma gara-gara kejadian pas studi tour ke Dufan?,yaa walaupun kejadian itu sangat langka dan sulit atau bahkan tidak akan terjadi lagi dengan orang yang sama,tebakan kamu salah besar.mungkin aku pernah mengungkapkan ini sebelumnya karena kamu diam saja jadi aku memastikan lagi untuk yang terakhir kali.
         </p>
         <button onclick="showPopup()">Selanjutnya</button>
-        
+        <button onclick="showEasterEgg()">new update</button>
+
         <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
 
@@ -193,5 +205,35 @@
 
         document.getElementById('overlay').addEventListener('click', closePopup);
     </script>
+
+    <div class="popup" id="easter-egg-popup">
+        <p style="font-size: 20px; line-height: 1.6; font-weight: bold;">Will you marry me?</p>
+        <button onclick="showFutureMessage()">Yes</button>
+        <button onclick="showFutureMessage()">No</button>
+        <button onclick="closeEasterEgg()">Tutup</button>
+        <p class="note">&copy; A.H 5.1 SDN BHD</p>
+    </div>
+
+    <script>
+        function showEasterEgg() {
+            const popup = document.getElementById('easter-egg-popup');
+            const overlay = document.getElementById('overlay');
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        function showFutureMessage() {
+            alert("Fitur ini tidak bisa diakses sekarang kamu harus menunggu 5 sampai 10 tahun lagi agar legal untuk mengakses fitur ini.");
+        }
+
+        function closeEasterEgg() {
+            const popup = document.getElementById('easter-egg-popup');
+            const overlay = document.getElementById('overlay');
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    </script>
+
 </body>
-</html>
+    </html>
+    
