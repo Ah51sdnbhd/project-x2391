@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>survei berhadiah</title>
+    <title>strategi baru</title>
     <style>
         body {
             margin: 0;
@@ -155,28 +155,26 @@
         </div>
         <button onclick="enterMainPage()">Masuk</button>
         <p class="note">mohon untuk tidak membagikan atau menyebarkan info web ini</p>
-        <p class="pesan">maaf jika ada kekurangan dari segi animasi dan desain web ini,karena nanti ketika dibuka di smartphone/hp tidak terlalu berat</p>
+        <p class="pesan">mohon maaf jika ada kekurangan dari segi animasi,desain, dan penulisan kalimat pada web ini</p>
         <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
 
     <div class="main-page" id="main-page">
-        <h1 id="greeting" style="color: #fff;"></h1>
-        <p style="color: #fff; font-size: 18px; line-height: 1.6;">
-            Udah lama banget aku nyimpan ini sejak kelas 7(entah kamu tau atau tidak) kalau sebenarnya aku suka sama kamu,Mungkin kamu pikir aku suka sama kamu cuma gara-gara kejadian pas studi tour ke Dufan?,yaa walaupun kejadian itu sangat langka dan sulit atau bahkan tidak akan terjadi lagi dengan orang yang sama,tebakan kamu salah besar.mungkin aku pernah mengungkapkan ini sebelumnya karena kamu diam saja jadi aku memastikan lagi untuk yang terakhir kali.
-        </p>
+        <h1 id="greeting" style="color: #333;"></h1>
+        <p style="color: #333; font-size: 18px; line-height: 1.6;">
+            Sudah lama sekali aku diam soal ini, mungkin sejak pertengahan kelas 7 (karena pada saat itu kamu sudah punya pacar, jadi aku hanya bisa diam saja), kalau sebenarnya aku suka sama kamu. Apakah kamu kira aku suka sama kamu karena sesuatu yang terjadi pada saat studi tur waktu itu? Ya, walaupun kejadian itu sangat langka dan sulit, bahkan tidak mungkin terulang lagi dengan orang yang sama, sayangnya tebakan kamu kurang tepat. Mungkin aku pernah mengungkapkan ini sebelumnya, karena kamu diam saja (apakah kamu diam saja karena caraku mengungkapkannya salah?), jadi aku hanya memastikan lagi untuk yang terakhir kali       </p>
         <button onclick="showPopup()">Selanjutnya</button>
-        <button onclick="showEasterEgg()">new update</button>
-
         <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
 
     <div class="overlay" id="overlay"></div>
 
     <div class="popup" id="popup">
-        <p style="font-size: 16px; line-height: 1.6;">sebelum klik tombol dibawah,aku cuma mau memastikan kalau kamu benar-benar yakin sama keputusanmu. Kalau kamu nggak suka, aku bakal menghargai itu dan nggak akan ganggu kamu lagi.(jika kamu klik tombol dibawah kamu akan diarahkan langsung ke WhatsApp saya dan otomatis akan menuliskan apa yang kamu klik)</p>
+        <p style="font-size: 16px; line-height: 1.6;">Sebelum kamu mengklik tombol di bawah, aku cuma mau memastikan kalau kamu benar-benar yakin sama keputusanmu. Kalau kamu nggak suka, aku bakal menghargai itu dan nggak akan ganggu kamu kapan pun dan di mana pun. (Ketika kamu mengklik tombol di bawah, kecuali tombol tambahan, kamu akan diarahkan langsung ke WhatsApp saya dan otomatis akan menuliskan apa yang kamu klik)</p>
         <button onclick="window.location.href='https://api.whatsapp.com/send?phone=+62 858-7665-8074&text=Aku%20suka%20kamu!'">Aku Suka Kamu (happy ending)</button>
         <button onclick="window.location.href='https://api.whatsapp.com/send?phone=+62 858-7665-8074&text=Aku%20gak%20suka!'">Aku Gak Suka (sad ending)</button>
         <button onclick="window.location.href='https://api.whatsapp.com/send?phone=+62 858-7665-8074&text=Aku%20sudah%20punya%20pacar'">Aku sudah punya pacar (bad ending)</button>
+        <button onclick="showEasterEgg()">tambahan</button>
         <button onclick="closePopup()">Tutup</button>
         <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
@@ -207,7 +205,7 @@
     </script>
 
     <div class="popup" id="easter-egg-popup">
-        <p style="font-size: 20px; line-height: 1.6; font-weight: bold;">Will you marry me?</p>
+        <p style="font-size: 16px; line-height: 1.6;">If you accept me as your boyfriend, would you be willing to maintain this relationship until we get married? Because I'm too lazy to look for other women and there's no woman as beautiful as you.</p>
         <button onclick="showFutureMessage()">Yes</button>
         <button onclick="showFutureMessage()">No</button>
         <button onclick="closeEasterEgg()">Tutup</button>
@@ -223,7 +221,7 @@
         }
 
         function showFutureMessage() {
-            alert("Fitur ini tidak bisa diakses sekarang kamu harus menunggu 5 sampai 10 tahun lagi agar legal untuk mengakses fitur ini.");
+            alert("kamu bisa mengkomfirmasi pilihan yang kamu pilih yes atau no ke nomor whatsapp saya");
         }
 
         function closeEasterEgg() {
@@ -235,5 +233,4 @@
     </script>
 
 </body>
-    </html>
-    
+</html>
