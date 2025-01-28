@@ -81,12 +81,13 @@ body.dark .container {
     font-size: 1.8rem;
     font-weight: bold;
     margin: 10px 0;
-    color: #222;
+    color: var(--text-light);  /* Warna teks sesuai dengan tema */
 }
 
+/* Deskripsi Profil */
 .description {
     font-size: 1rem;
-    color: #666;
+    color: var(--text-light);  /* Warna teks sesuai dengan tema */
     line-height: 1.6;
 }
 
@@ -201,5 +202,4 @@ body.dark .theme-toggle {
         opacity: 1;
         transform: translateY(0);
     }
-    }
-    
+}
