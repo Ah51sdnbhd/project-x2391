@@ -1,3 +1,80 @@
+/* Variabel Tema */
+:root {
+    --background-light: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+    --background-dark: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+    --text-light: #333;
+    --text-dark: #f5f5f5;
+    --card-light: #ffffff;
+    --card-dark: #2a2a2a;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.5);
+}
+
+/* Tema Default */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    background: var(--background-light);
+    color: var(--text-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-attachment: fixed;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Tema Gelap */
+body.dark {
+    background: var(--background-dark);
+    color: var(--text-dark);
+}
+
+.container {
+    background: var(--card-light);
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px var(--shadow-light);
+    padding: 40px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    animation: fadeIn 1s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+body.dark .container {
+    background: var(--card-dark);
+    box-shadow: 0px 4px 20px var(--shadow-dark);
+}
+
+/* Tombol Tema */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    background: var(--card-light);
+    color: var(--text-light);
+    cursor: pointer;
+    box-shadow: 0px 4px 10px var(--shadow-light);
+    transition: all 0.3s ease-in-out;
+}
+
+body.dark .theme-toggle {
+    background: var(--card-dark);
+    color: var(--text-dark);
+    box-shadow: 0px 4px 10px var(--shadow-dark);
+}
+
+.theme-toggle i {
+    margin-right: 5px;
+    }
 /* General Reset */
 body {
     margin: 0;
@@ -140,81 +217,5 @@ body::before {
         opacity: 1;
         transform: translateY(0);
     }
-    }
-/* Variabel Tema */
-:root {
-    --background-light: linear-gradient(135deg, #f0f4f8, #d9e2ec);
-    --background-dark: linear-gradient(135deg, #1e1e1e, #2a2a2a);
-    --text-light: #333;
-    --text-dark: #f5f5f5;
-    --card-light: #ffffff;
-    --card-dark: #2a2a2a;
-    --shadow-light: rgba(0, 0, 0, 0.1);
-    --shadow-dark: rgba(0, 0, 0, 0.5);
-}
-
-/* Tema Default */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    background: var(--background-light);
-    color: var(--text-light);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-attachment: fixed;
-    transition: all 0.3s ease-in-out;
-}
-
-/* Tema Gelap */
-body.dark {
-    background: var(--background-dark);
-    color: var(--text-dark);
-}
-
-.container {
-    background: var(--card-light);
-    border-radius: 12px;
-    box-shadow: 0px 4px 20px var(--shadow-light);
-    padding: 40px;
-    text-align: center;
-    max-width: 500px;
-    width: 90%;
-    animation: fadeIn 1s ease-in-out;
-    transition: all 0.3s ease-in-out;
-}
-
-body.dark .container {
-    background: var(--card-dark);
-    box-shadow: 0px 4px 20px var(--shadow-dark);
-}
-
-/* Tombol Tema */
-.theme-toggle {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 10px 15px;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 25px;
-    background: var(--card-light);
-    color: var(--text-light);
-    cursor: pointer;
-    box-shadow: 0px 4px 10px var(--shadow-light);
-    transition: all 0.3s ease-in-out;
-}
-
-body.dark .theme-toggle {
-    background: var(--card-dark);
-    color: var(--text-dark);
-    box-shadow: 0px 4px 10px var(--shadow-dark);
-}
-
-.theme-toggle i {
-    margin-right: 5px;
-}
+        }
+    
