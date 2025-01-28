@@ -197,3 +197,22 @@ body.dark .theme-toggle {
         transform: translateY(0);
     }
     }
+/* Footer Styling */
+footer {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    color: var(--text-light);
+    background: transparent;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    z-index: 10;
+}
+
+/* Gaya Footer di Mode Gelap */
+body.dark footer {
+    color: var(--text-dark-mode);
+}
