@@ -1,3 +1,146 @@
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    background: linear-gradient(135deg, #f0f4f8, #d9e2ec); /* Gradien lembut */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-attachment: fixed; /* Membuat background tetap pada tempatnya saat scroll */
+}
+
+/* Optional: Tambahkan Tekstur */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Tekstur halus */
+    opacity: 0.1; /* Transparansi untuk tekstur */
+    z-index: -1; /* Agar tidak menutupi elemen lain */
+}
+
+/* Container Styling */
+.container {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    animation: fadeIn 1s ease-in-out; /* Animasi masuk untuk container */
+}
+
+/* Profile Section */
+.profile {
+    margin-bottom: 30px;
+}
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #007BFF;
+    margin-bottom: 15px;
+}
+.profile h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #222;
+}
+.description {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Social Media Buttons */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    animation: fadeIn 1.2s ease-in-out; /* Animasi masuk untuk social links */
+}
+.social-btn {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 12px 20px;
+    border-radius: 25px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    animation: fadeIn 1.5s ease-in-out; /* Animasi masuk untuk tombol individual */
+}
+.social-btn i {
+    font-size: 1.2rem;
+}
+
+/* Animasi Hover */
+.social-btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease-in-out;
+    z-index: 0;
+}
+.social-btn:hover::before {
+    width: 250%;
+    height: 250%;
+}
+.social-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Individual Button Colors */
+.social-btn.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.social-btn.youtube { background: #FF0000; }
+.social-btn.tiktok { background: linear-gradient(45deg, #69C9D0, #EE1D52, #010101); }
+.social-btn.twitter { background: #1DA1F2; }
+.social-btn.facebook { background: #1877F2; }
+
+/* Responsif */
+@media (max-width: 500px) {
+    .social-btn {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+    .social-btn i {
+        font-size: 1rem;
+    }
+}
+
+/* Animasi Masuk (Fade-in) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    }
 /* Variabel Tema */
 :root {
     --background-light: linear-gradient(135deg, #f0f4f8, #d9e2ec);
