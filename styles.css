@@ -1,14 +1,17 @@
-/* Variabel Tema */
+/* Variabel Tema Diperbarui */
 :root {
-    --background-light: linear-gradient(135deg, #f0f4f8, #d9e2ec);
-    --background-dark: linear-gradient(135deg, #1e1e1e, #2a2a2a);
-    --text-light: #333;
-    --text-dark: #f5f5f5;
-    --text-dark-mode: #f5f5f5; /* Warna teks terang untuk tema gelap */
-    --card-light: #ffffff;
-    --card-dark: #2a2a2a;
-    --shadow-light: rgba(0, 0, 0, 0.1);
-    --shadow-dark: rgba(0, 0, 0, 0.5);
+    --background-light: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    --background-dark: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+    --text-light: #2d3436;
+    --text-dark: #f8f9fa;
+    --primary-color: #4a90e2;
+    --secondary-color: #6c757d;
+    --card-light: rgba(255, 255, 255, 0.95);
+    --card-dark: rgba(30, 30, 30, 0.95);
+    --shadow-light: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --pattern-light: url('data:image/svg+xml,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path fill="%23ffffff" fill-opacity="0.1" d="M45,-58C57.1,-46.8,64.2,-31.8,69.5,-14.9C74.8,2.1,78.4,21,70.3,33.3C62.1,45.6,42.3,51.4,23.8,56.8C5.3,62.2,-11.9,67.3,-27.5,63.3C-43.1,59.3,-57.1,46.3,-66.1,30.2C-75.1,14.1,-79.2,-5.1,-73.1,-19.9C-67.1,-34.7,-50.9,-45.1,-35.3,-55.4C-19.7,-65.7,-4.8,-75.9,10.7,-81.6C26.2,-87.3,52.3,-88.5,45,-58Z"/></svg>');
+    --pattern-dark: url('data:image/svg+xml,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path fill="%23000000" fill-opacity="0.2" d="M45,-58C57.1,-46.8,64.2,-31.8,69.5,-14.9C74.8,2.1,78.4,21,70.3,33.3C62.1,45.6,42.3,51.4,23.8,56.8C5.3,62.2,-11.9,67.3,-27.5,63.3C-43.1,59.3,-57.1,46.3,-66.1,30.2C-75.1,14.1,-79.2,-5.1,-73.1,-19.9C-67.1,-34.7,-50.9,-45.1,-35.3,-55.4C-19.7,-65.7,-4.8,-75.9,10.7,-81.6C26.2,-87.3,52.3,-88.5,45,-58Z"/></svg>');
 }
 
 /* General Reset */
@@ -17,28 +20,32 @@ body {
     padding: 0;
     font-family: 'Arial', sans-serif;
     font-size: 16px;
-    background: var(--background-light);
+    background: var(--pattern-light), var(--background-light);
+    background-size: cover;
+    background-attachment: fixed;
     color: var(--text-light);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-attachment: fixed;
     transition: all 0.3s ease-in-out;
 }
 
 /* Tema Gelap */
 body.dark {
-    background: var(--background-dark);
+    background: var(--pattern-dark), var(--background-dark);
     color: var(--text-dark);
 }
 
-/* Container Styling */
+/* Container Modern */
 .container {
     background: var(--card-light);
-    border-radius: 12px;
-    box-shadow: 0px 4px 20px var(--shadow-light);
-    padding: 40px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: var(--shadow-light);
+    padding: 2.5rem;
     text-align: center;
     max-width: 500px;
     width: 90%;
@@ -46,43 +53,65 @@ body.dark {
     transition: all 0.3s ease-in-out;
 }
 
-/* Tema Gelap untuk Container */
 body.dark .container {
     background: var(--card-dark);
-    box-shadow: 0px 4px 20px var(--shadow-dark);
+    border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-/* Profile Section */
+/* Profile Section Diperbarui */
 .profile {
-    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+}
+
+.profile::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
 }
 
 .profile-pic {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
+    border: 4px solid var(--primary-color);
+    padding: 3px;
     border-radius: 50%;
-    border: 3px solid #007BFF;
-    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: rotate(5deg) scale(1.05);
 }
 
 .profile h1 {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin: 10px 0;
-    color: var(--text-light);  /* Warna teks sesuai dengan tema */
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin: 1.5rem 0;
+    color: var(--text-light);
+    position: relative;
+    display: inline-block;
+}
+
+body.dark .profile h1 {
+    color: var(--text-dark);
 }
 
 /* Deskripsi Profil */
 .description {
     font-size: 1rem;
-    color: var(--text-light);  /* Warna teks sesuai dengan tema */
+    color: var(--text-light);
     line-height: 1.6;
 }
 
-/* Mode Gelap untuk Profil */
-body.dark .profile h1, 
 body.dark .description {
-    color: var(--text-dark-mode);  /* Teks terang di mode gelap */
+    color: var(--text-dark);
 }
 
 /* Social Media Buttons */
@@ -109,30 +138,26 @@ body.dark .description {
     overflow: hidden;
     transition: all 0.3s ease-in-out;
     animation: fadeIn 1.5s ease-in-out;
+    border: 2px solid transparent;
+    background-clip: padding-box;
 }
 
-.social-btn i {
-    font-size: 1.2rem;
-}
-
-/* Animasi Hover */
-.social-btn::before {
-    content: "";
+.social-btn::after {
+    content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.4s ease-in-out;
-    z-index: 0;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, transparent 20%, rgba(255,255,255,0.3));
+    border-radius: 25px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.social-btn:hover::before {
-    width: 250%;
-    height: 250%;
+.social-btn:hover::after {
+    opacity: 1;
 }
 
 .social-btn:hover {
@@ -149,7 +174,7 @@ body.dark .description {
 
 /* Tombol Tema */
 .theme-toggle {
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 20px;
     padding: 10px 15px;
@@ -160,14 +185,16 @@ body.dark .description {
     background: var(--card-light);
     color: var(--text-light);
     cursor: pointer;
-    box-shadow: 0px 4px 10px var(--shadow-light);
+    box-shadow: var(--shadow-light);
     transition: all 0.3s ease-in-out;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 body.dark .theme-toggle {
     background: var(--card-dark);
     color: var(--text-dark);
-    box-shadow: 0px 4px 10px var(--shadow-dark);
+    box-shadow: var(--shadow-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .theme-toggle i {
