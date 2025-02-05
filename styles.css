@@ -1,4 +1,4 @@
-/* Variabel Tema Diperbarui */
+/* Variabel Tema */
 :root {
     --background-light: linear-gradient(135deg, #f8f9fa, #e9ecef);
     --background-dark: linear-gradient(135deg, #0a0a0a, #1a1a1a);
@@ -12,49 +12,116 @@
     --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
+/* Tema Default */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    background: var(--background-light);
+    color: var(--text-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-attachment: fixed;
+    transition: all 0.3s ease-in-out;
+}
+
 /* Tema Gelap */
 body.dark {
     background: var(--background-dark);
     color: var(--text-dark);
 }
 
+/* Container */
+.container {
+    background: var(--card-light);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: var(--shadow-light);
+    padding: 2.5rem;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    animation: fadeIn 1s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+body.dark .container {
+    background: var(--card-dark);
+    box-shadow: var(--shadow-dark);
+}
+
+/* Profile Section */
+.profile {
+    margin-bottom: 2rem;
+}
+
+.profile-pic {
+    width: 140px;
+    height: 140px;
+    border: 4px solid var(--primary-color);
+    padding: 3px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: rotate(5deg) scale(1.05);
+}
+
+.profile h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 1.5rem 0;
+}
+
+.description {
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+body.dark .description {
+    color: var(--text-dark);
+}
+
 /* Social Media Buttons */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Tombol Media Sosial */
 .social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     font-weight: bold;
     font-size: 1rem;
     padding: 12px 20px;
     border-radius: 25px;
     color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
     position: relative;
-    overflow: hidden;
     transition: all 0.3s ease-in-out;
-    animation: fadeIn 1.5s ease-in-out;
-    border: 2px solid transparent;
-    background-clip: padding-box;
 }
 
 /* Efek Hover Modern */
 .social-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 20px rgba(255, 255, 255, 0.2);
 }
 
 /* Warna & Efek Hover untuk Setiap Tombol */
 .social-btn.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-.social-btn.instagram:hover { box-shadow: 0px 5px 20px rgba(225, 48, 108, 0.5); }
-
 .social-btn.youtube { background: #FF0000; }
-.social-btn.youtube:hover { box-shadow: 0px 5px 20px rgba(255, 0, 0, 0.5); }
-
 .social-btn.tiktok { background: linear-gradient(45deg, #69C9D0, #EE1D52, #010101); }
-.social-btn.tiktok:hover { box-shadow: 0px 5px 20px rgba(238, 29, 82, 0.5); }
 
-/* Ganti Twitter menjadi X */
+/* X (Twitter) */
 .social-btn.twitter {
     background: #000000; /* Warna hitam solid */
 }
@@ -64,6 +131,29 @@ body.dark {
 
 .social-btn.facebook { background: #1877F2; }
 .social-btn.facebook:hover { box-shadow: 0px 5px 20px rgba(24, 119, 242, 0.5); }
+
+/* Tombol Tema */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    background: var(--card-light);
+    color: var(--text-light);
+    cursor: pointer;
+    box-shadow: var(--shadow-light);
+    transition: all 0.3s ease-in-out;
+}
+
+body.dark .theme-toggle {
+    background: var(--card-dark);
+    color: var(--text-dark);
+    box-shadow: var(--shadow-dark);
+}
 
 /* Responsif */
 @media (max-width: 500px) {
