@@ -1,46 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> <!-- Font Awesome -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A.H 5.1 | Digital Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #6366f1;
+      --secondary: #10b981;
+      --background-light: linear-gradient(45deg, #f8f9fa, #e9ecef);
+      --background-dark: linear-gradient(225deg, #0f172a, #1e293b);
+      --text-light: #1e293b;
+      --text-dark: #f8fafc;
+      --glass-light: rgba(255, 255, 255, 0.15);
+      --glass-dark: rgba(0, 0, 0, 0.15);
+      --shadow-light: 0 8px 32px rgba(0, 0, 0, 0.1);
+      --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.5);
+      --particle-color-light: rgba(0, 0, 0, 0.2);
+      --particle-color-dark: rgba(255, 255, 255, 0.5);
+      --particle-color: var(--particle-color-light);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      background: var(--background-light);
+      color: var(--text-light);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body.dark {
+      background: var(--background-dark);
+      color: var(--text-dark);
+      --particle-color: var(--particle-color-dark);
+    }
+
+    .particles-container {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .container {
+      background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 0.15) 0%, 
+                rgba(255, 255, 255, 0.05) 100%);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-light);
+      position: relative;
+      z-index: 1;
+      animation: float 6s ease-in-out infinite;
+      border: 1px solid var(--glass-light);
+      max-width: 600px;
+      width: 95%;
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: scale(1.02);
+    }
+
+    body.dark .container {
+      background: linear-gradient(145deg, 
+                rgba(0, 0, 0, 0.15) 0%, 
+                rgba(0, 0, 0, 0.05) 100%);
+      border-color: var(--glass-dark);
+    }
+
+    .profile {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .hexagon {
+      width: 160px;
+      height: 160px;
+      background: var(--primary);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      margin: 0 auto;
+      position: relative;
+      transition: transform 0.5s ease;
+    }
+
+    .profile-pic {
+      width: 94%;
+      height: 94%;
+      object-fit: cover;
+      clip-path: inherit;
+      position: absolute;
+      top: 3%;
+      left: 3%;
+      transition: transform 0.5s ease;
+    }
+
+    .hexagon:hover .profile-pic {
+      transform: scale(1.1);
+    }
+
+    .animated-title {
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 1.5rem 0;
+      animation: textGlow 2s ease-in-out infinite alternate;
+    }
+
+    .description {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .social-links {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .social-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background-size: 200% auto;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      text-decoration: none;
+      backdrop-filter: blur(5px);
+    }
+
+    .social-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      background-position: right center;
+    }
+
+    .social-btn i {
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .social-btn.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .social-btn.youtube { background: #FF0000; }
+    .social-btn.tiktok { background: linear-gradient(45deg, #69C9D0, #EE1D52, #010101); }
+    .social-btn.twitter { background: #000000; }
+    .social-btn.facebook { background: #1877F2; }
+    .social-btn.email { background: linear-gradient(45deg, #4CAF50, #2196F3); }
+
+    .theme-toggle {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 30px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8px;
+    }
+
+    .language-switcher {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      z-index: 9999;
+    }
+
+    .language-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: inherit;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .language-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
+      animation: toastSlide 0.5s ease-out;
+      display: none;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes textGlow {
+      from { text-shadow: 0 0 10px rgba(99, 102, 241, 0.3); }
+      to { text-shadow: 0 0 20px rgba(99, 102, 241, 0.6); }
+    }
+
+    @keyframes toastSlide {
+      from { bottom: -50px; }
+      to { bottom: 20px; }
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--particle-color);
+      border-radius: 50%;
+      animation: particle-float linear infinite;
+    }
+    
+    @keyframes particle-float {
+      0% { transform: translateY(0); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+      }
+      .hexagon {
+        width: 120px;
+        height: 120px;
+      }
+      .social-btn {
+        padding: 1rem 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <button class="theme-toggle" id="theme-toggle">
-        <i class="fas fa-sun"></i> Light Mode
-    </button>
-    <div class="container">
-        <!-- Profile Section -->
-        <div class="profile">
-            <div class="profile-pic-container">
-                <img src="profile picture.jpg" alt="Profile Picture" class="profile-pic">
-            </div>
-            <h1>A.H 5.1</h1>
-            <p class="description">
-                Selamat datang di profil profesional saya. Mari terhubung melalui platform berikut untuk informasi terbaru!
-            </p>
+  <div class="theme-toggle" id="theme-toggle">
+    <div class="toggle-circle"></div>
+    <i class="fas fa-sun"></i>
+    <i class="fas fa-moon"></i>
+  </div>
+
+  <div class="language-switcher">
+    <select class="language-btn" id="language-select">
+      <option value="en">English</option>
+      <option value="id">Indonesia</option>
+      <option value="jv">Jawa(Indonesia)</option>
+    </select>
+  </div>
+
+  <div class="particles-container" id="particles"></div>
+  <div class="toast" id="toast"></div>
+
+  <div class="container">
+    <div class="profile">
+      <div class="profile-pic-container">
+        <div class="hexagon">
+          <img src="profile picture.jpg" alt="Profile Picture" class="profile-pic" />
         </div>
-        <!-- Social Links Section -->
-        <div class="social-links">
-            <a href="https://instagram.com/a.h_5.1_sdn_bhd" class="social-btn instagram" target="_blank">
-                <i class="fab fa-instagram"></i> Instagram
-            </a>
-            <a href="https://youtube.com/@A.H_5.1" class="social-btn youtube" target="_blank">
-                <i class="fab fa-youtube"></i> YouTube
-            </a>
-            <a href="https://tiktok.com/@intel_uhd_graphics" class="social-btn tiktok" target="_blank">
-                <i class="fab fa-tiktok"></i> TikTok
-            </a>
-            <a href="https://twitter.com/@absurd_humor_51" class="social-btn twitter" target="_blank">
-                <i class="fab fa-x-twitter"></i> X
-            </a>
-            <a href="https://facebook.com/rafa.galang.3762" class="social-btn facebook" target="_blank">
-                <i class="fab fa-facebook"></i> Facebook
-            </a>
-        </div>
+      </div>
+      <h1 class="animated-title">A.H 5.1</h1>
+      <p class="description" id="description"></p>
     </div>
-    <script src="script.js"></script>
+
+    <div class="social-links">
+      <a href="https://instagram.com/a.h_5.1_sdn_bhd" class="social-btn instagram" target="_blank">
+        <i class="fab fa-instagram"></i>
+        <span>Instagram</span>
+      </a>
+      <a href="https://youtube.com/@A.H_5.1" class="social-btn youtube" target="_blank">
+        <i class="fab fa-youtube"></i>
+        <span>YouTube</span>
+      </a>
+      <a href="https://tiktok.com/@intel_uhd_graphics" class="social-btn tiktok" target="_blank">
+        <i class="fab fa-tiktok"></i>
+        <span>TikTok</span>
+      </a>
+      <a href="https://twitter.com/@absurd_humor_51" class="social-btn twitter" target="_blank">
+        <i class="fab fa-x-twitter"></i>
+        <span>X (Twitter)</span>
+      </a>
+      <a href="https://www.facebook.com/rafa.galang.3762" class="social-btn facebook" target="_blank">
+        <i class="fab fa-facebook"></i>
+        <span>Facebook</span>
+      </a>
+      <a href="mailto: kakshzbzjnsvxh@gmail.com" class="social-btn email">
+        <i class="fas fa-envelope"></i>
+        <span>Email</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const languageSelect = document.getElementById('language-select');
+    const toast = document.getElementById('toast');
+
+    const descriptions = {
+      en: "Welcome to my digital hub.Follow our social media so you don't miss any information",
+      id: "Selamat datang di pusat digital saya.ikuti media sosial kami agar tidak ketinggalan informasi",
+      jv: "Sugeng rawuh ing digital hub kula.Tindakake media sosial kita supaya sampeyan ora kantun informasi liyane",
+    };
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.style.display = 'block';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 3000);
+    }
+
+    function setDescription(lang) {
+      document.getElementById('description').textContent = descriptions[lang];
+      localStorage.setItem('preferredLang', lang);
+    }
+
+    function createParticles() {
+      const particles = document.getElementById('particles');
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.cssText = `
+          left: ${Math.random() * 100}%;
+          top: ${Math.random() * 100}%;
+          animation-duration: ${Math.random() * 3 + 2}s;
+          width: ${Math.random() * 4 + 2}px;
+          height: ${Math.random() * 4 + 2}px;
+        `;
+        particles.appendChild(particle);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      const savedLang = localStorage.getItem('preferredLang') || navigator.language.split('-')[0];
+      
+      body.classList.toggle('dark', savedTheme === 'dark');
+      languageSelect.value = savedLang in descriptions ? savedLang : 'en';
+      setDescription(languageSelect.value);
+      createParticles();
+    });
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      const theme = body.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', theme);
+      showToast(`Theme changed to ${theme}`);
+    });
+
+    languageSelect.addEventListener('change', () => {
+      setDescription(languageSelect.value);
+    });
+  </script>
 </body>
-    </html>
+</html>
