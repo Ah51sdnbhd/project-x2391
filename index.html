@@ -86,30 +86,40 @@
       margin-bottom: 2rem;
     }
 
-    .hexagon {
-      width: 160px;
-      height: 160px;
-      background: var(--primary);
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-      margin: 0 auto;
-      position: relative;
-      transition: transform 0.5s ease;
-    }
+   /* Ganti .hexagon dengan .profile-pic-container */
+.profile-pic-container {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  padding: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-    .profile-pic {
-      width: 94%;
-      height: 94%;
-      object-fit: cover;
-      clip-path: inherit;
-      position: absolute;
-      top: 3%;
-      left: 3%;
-      transition: transform 0.5s ease;
-    }
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
 
-    .hexagon:hover .profile-pic {
-      transform: scale(1.1);
-    }
+.profile-pic-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+}
+
+.profile-pic-container:hover .profile-pic {
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Hapus class .hexagon dan .hexagon:hover dari CSS */
 
     .animated-title {
       font-size: 2.5rem;
@@ -283,10 +293,12 @@
 
   <div class="container">
     <div class="profile">
-      <div class="profile-pic-container">
-        <div class="hexagon">
-          <img src="profile picture.jpg" alt="Profile Picture" class="profile-pic" />
-        </div>
+  <div class="profile-pic-container">
+    <img src="profile picture.jpg" alt="Profile Picture" class="profile-pic" />
+  </div>
+  <h1 class="animated-title">A.H 5.1</h1>
+  <p class="description" id="description"></p>
+</div>
       </div>
       <h1 class="animated-title">A.H 5.1</h1>
       <p class="description" id="description"></p>
