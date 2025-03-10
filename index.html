@@ -191,6 +191,43 @@
       margin-top: 2rem;
       opacity: 0.8;
     }
+    @media (max-width: 768px) {
+  .theme-toggle {
+    top: 1rem;
+    right: 1rem;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .language-switcher {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.6rem;
+  }
+  
+  .lang-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  /* Pastikan tombol di atas semua elemen */
+  .theme-toggle,
+  .language-switcher {
+    z-index: 1000;
+  }
+  
+  /* Perkecil ukuran container */
+  .container {
+    margin-top: 4rem;
+    padding: 1.5rem;
+  }
+  
+  /* Perbaiki tata letak avatar */
+  .avatar {
+    width: 120px;
+    height: 120px;
+  }
+}
   </style>
 </head>
 <body>
@@ -224,9 +261,6 @@
       </a>
       <a href="https://twitter.com/@absurd_humor_51" class="social-link twitter">
         <i class="fab fa-x-twitter social-icon"></i> Twitter
-      </a>
-      <a href="mailto:kakshzbzjnsvxh@gmail.com" class="social-link email">
-        <i class="fas fa-envelope social-icon"></i> Email
       </a>
     </div>
 
