@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -24,8 +24,9 @@
       font-family: 'Inter', sans-serif;
     }
 
+    /* Modifikasi latar belakang untuk mode terang dengan gradasi */
     body {
-      background: var(--light);
+      background: linear-gradient(135deg, #e0eafc, #cfdef3);
       color: var(--text-primary);
       min-height: 100vh;
       display: flex;
@@ -38,6 +39,12 @@
     body.dark {
       background: var(--dark);
       color: var(--text-dark);
+    }
+
+    /* Pada mode terang, kontainer diberikan gradasi lembut */
+    body:not(.dark) .container {
+      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+      border: 1px solid rgba(255,255,255,0.4);
     }
 
     .container {
@@ -82,6 +89,7 @@
       margin: 2rem 0;
     }
 
+    /* Social link styles */
     .social-link {
       display: flex;
       align-items: center;
@@ -90,12 +98,33 @@
       text-decoration: none;
       color: white;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      background: var(--dark);
     }
 
     .social-link:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Warna tombol social link sesuai dengan warna khas di mode terang */
+    .social-link.instagram {
+      background: linear-gradient(45deg, #feda75, #dd2a7b, #8134af, #515bd4);
+    }
+
+    .social-link.youtube {
+      background: #FF0000;
+    }
+
+    .social-link.tiktok {
+      background: linear-gradient(45deg, #69C9D0, #EE1D52);
+    }
+
+    .social-link.twitter {
+      background: #000000;
+    }
+
+    /* Di mode gelap, sedikit penyesuaian brightness agar serasi */
+    body.dark .social-link {
+      filter: brightness(0.9);
     }
 
     .social-icon {
@@ -109,6 +138,11 @@
       border-radius: 15px;
       margin-top: 2rem;
       text-align: center;
+    }
+
+    /* Penyesuaian donation-section di mode gelap */
+    body.dark .donation-section {
+      background: rgba(255, 255, 255, 0.05);
     }
 
     .donation-link {
@@ -146,6 +180,11 @@
       gap: 0.8rem;
       transition: all 0.3s ease;
       color: inherit;
+    }
+
+    /* Penyesuaian theme toggle di mode gelap */
+    body.dark .theme-toggle {
+      background: rgba(255, 255, 255, 0.1);
     }
 
     .theme-toggle:hover {
@@ -192,49 +231,46 @@
       opacity: 0.8;
     }
     @media (max-width: 768px) {
-  .theme-toggle {
-    top: 1rem;
-    right: 1rem;
-    padding: 0.8rem;
-    font-size: 0.9rem;
-  }
-  
-  .language-switcher {
-    top: 1rem;
-    left: 1rem;
-    padding: 0.6rem;
-  }
-  
-  .lang-btn {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
-  }
+      .theme-toggle {
+        top: 1rem;
+        right: 1rem;
+        padding: 0.8rem;
+        font-size: 0.9rem;
+      }
+      
+      .language-switcher {
+        top: 1rem;
+        left: 1rem;
+        padding: 0.6rem;
+      }
+      
+      .lang-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+      }
 
-  /* Pastikan tombol di atas semua elemen */
-  .theme-toggle,
-  .language-switcher {
-    z-index: 1000;
-  }
-  
-  /* Perkecil ukuran container */
-  .container {
-    margin-top: 4rem;
-    padding: 1.5rem;
-  }
-  
-  /* Perbaiki tata letak avatar */
-  .avatar {
-    width: 120px;
-    height: 120px;
-  }
-}
+      .theme-toggle,
+      .language-switcher {
+        z-index: 1000;
+      }
+      
+      .container {
+        margin-top: 4rem;
+        padding: 1.5rem;
+      }
+      
+      .avatar {
+        width: 120px;
+        height: 120px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="language-switcher" id="language-switcher">
-    <button class="lang-btn active" data-lang="en">EN</button>
-    <button class="lang-btn" data-lang="id">ID</button>
-    <button class="lang-btn" data-lang="ms">MS</button>
+    <button class="lang-btn active" data-lang="en">EN🇺🇸</button>
+    <button class="lang-btn" data-lang="id">ID🇮🇩</button>
+    <button class="lang-btn" data-lang="ms">MS🇲🇾</button>
   </div>
 
   <button class="theme-toggle" id="theme-toggle">
@@ -260,14 +296,14 @@
         <i class="fab fa-tiktok social-icon"></i> TikTok
       </a>
       <a href="https://twitter.com/@absurd_humor_51" class="social-link twitter">
-        <i class="fab fa-x-twitter social-icon"></i> Twitter
+        <i class="fab fa-x-twitter social-icon"></i> X
       </a>
     </div>
 
     <section class="donation-section">
-      <h2 id="donation-title">Support My Work</h2>
+      <h2 id="donation-title">Support Me</h2>
       <div class="donation-methods">
-        <p id="donation-text">Appreciate my content? Support me through:</p>
+        <p id="donation-text">Like my content? Support me through:</p>
         <a href="https://sociabuzz.com/ah51" class="donation-link" target="_blank">
           <i class="fas fa-hand-holding-heart"></i>
           <span>Sociabuzz</span>
@@ -276,7 +312,7 @@
     </section>
 
     <footer class="footer">
-      <p id="footer-text">© 2024 A.H 5.1 | All Connections in One Place</p>
+      <p id="footer-text">© 2025 A.H 5.1 | All Connections in One Place</p>
     </footer>
   </div>
 
@@ -284,23 +320,23 @@
     const translations = {
       en: {
         bio: "Digital creator connecting through technology and humor",
-        donationTitle: "Support My Work",
-        donationText: "Appreciate my content? Support me through:",
-        footer: "© 2024 A.H 5.1 | All Connections in One Place",
+        donationTitle: "Support Me",
+        donationText: "Like my content? Support me through:",
+        footer: "© 2025 A.H 5.1 | All Connections in One Place",
         themeText: ["Dark Mode", "Light Mode"]
       },
       id: {
         bio: "Kreator digital yang menghubungkan melalui teknologi dan humor",
-        donationTitle: "Dukung Karya Saya",
-        donationText: "Menikmati konten saya? Dukung saya melalui:",
-        footer: "© 2024 A.H 5.1 | Semua Koneksi dalam Satu Tempat",
+        donationTitle: "Dukung Saya",
+        donationText: "Suka dengan konten saya? Dukung saya melalui:",
+        footer: "© 2025 A.H 5.1 | Semua Koneksi dalam Satu Tempat",
         themeText: ["Mode Gelap", "Mode Terang"]
       },
       ms: {
         bio: "Pencipta digital yang berhubung melalui teknologi dan humor",
-        donationTitle: "Sokong Hasil Karya Saya",
-        donationText: "Sukakan kandungan saya? Sokong saya melalui:",
-        footer: "© 2024 A.H 5.1 | Semua Sambungan di Satu Tempat",
+        donationTitle: "Sokong Saya",
+        donationText: "Suka kandungan saya? Sokong saya melalui:",
+        footer: "© 2025 A.H 5.1 | Semua Sambungan di Satu Tempat",
         themeText: ["Mode Gelap", "Mode Cerah"]
       }
     };
@@ -352,13 +388,11 @@
     const savedTheme = localStorage.getItem('theme') || 'light';
     const savedLang = localStorage.getItem('lang') || 'en';
     
-    // Set initial theme
     if (savedTheme === 'dark') {
       body.classList.add('dark');
       themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
     }
     
-    // Set initial language
     document.querySelector(`[data-lang="${savedLang}"]`).classList.add('active');
     updateContent(savedLang);
     themeText.textContent = translations[savedLang].themeText[savedTheme === 'dark' ? 1 : 0];
