@@ -1,402 +1,378 @@
-<!DOCTYPE html> 
-<html lang="en">
+<!DOCTYPE html>
+<!-- Atribut lang akan diatur oleh JS -->
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A.H 5.1 | Digital Presence Hub</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    :root {
-      --primary: #2563eb;
-      --secondary: #059669;
-      --accent: #7c3aed;
-      --light: #f8fafc;
-      --dark: #0f172a;
-      --glass: rgba(255,255,255,0.1);
-      --text-primary: #0f172a;
-      --text-dark: #f8fafc;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.H 5.1 | Elegant Digital Hub</title>
 
-    /* Modifikasi latar belakang untuk mode terang dengan gradasi */
-    body {
-      background: linear-gradient(135deg, #e0eafc, #cfdef3);
-      color: var(--text-primary);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      line-height: 1.6;
-    }
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    body.dark {
-      background: var(--dark);
-      color: var(--text-dark);
-    }
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    /* Pada mode terang, kontainer diberikan gradasi lembut */
-    body:not(.dark) .container {
-      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-      border: 1px solid rgba(255,255,255,0.4);
-    }
+    <!-- === EMBEDDED CSS START === -->
+    <style>
+        /* CSS Variables */
+        :root {
+            --font-primary: 'Poppins', sans-serif;
+            --transition-speed: 0.4s;
+            --transition-timing: cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth transition */
 
-    .container {
-      width: 90%;
-      max-width: 800px;
-      background: var(--glass);
-      backdrop-filter: blur(12px);
-      border-radius: 20px;
-      padding: 2.5rem;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-      border: 1px solid rgba(255,255,255,0.1);
-      margin: 2rem 0;
-    }
+            /* Dark Mode Colors */
+            --bg-gradient-dark: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            --card-bg-dark: rgba(22, 33, 62, 0.65); /* Semi-transparent for glassmorphism */
+            --card-border-dark: rgba(255, 255, 255, 0.15);
+            --text-color-dark: #e8e8e8;
+            --text-muted-dark: #a0a8b8;
+            --accent-color-dark-1: #4a00e0; /* Vibrant accent */
+            --accent-color-dark-2: #8e2de2;
+            --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.3);
 
-    .profile-section {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
+            /* Light Mode Colors */
+            --bg-gradient-light: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --card-bg-light: rgba(255, 255, 255, 0.6); /* Semi-transparent */
+            --card-border-light: rgba(255, 255, 255, 0.4);
+            --text-color-light: #2c3e50;
+            --text-muted-light: #5a6a7a;
+            --accent-color-light-1: #007bff;
+            --accent-color-light-2: #6610f2; /* Purple accent */
+            --shadow-light: 0 8px 32px rgba(100, 100, 150, 0.2);
 
-    .avatar {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto 1.5rem;
-      border: 3px solid var(--primary);
-      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.2);
-    }
+            /* Shared Brand Colors */
+            --color-instagram: #E4405F;
+            --color-youtube: #FF0000;
+            --color-tiktok: #000000; /* Simple black for elegance */
+            --color-twitter: #1DA1F2;
+            --color-support: #2ecc71;
+        }
 
-    .title {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(45deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+        /* Global Reset & Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background var(--transition-speed) var(--transition-timing), color var(--transition-speed) var(--transition-timing);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+        body.dark-mode { background: var(--bg-gradient-dark); color: var(--text-color-dark); }
+        body.light-mode { background: var(--bg-gradient-light); color: var(--text-color-light); }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; transition: all var(--transition-speed) var(--transition-timing); }
 
-    .links-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.2rem;
-      margin: 2rem 0;
-    }
+        /* Header */
+        .app-header {
+            position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2.5rem; z-index: 100; background: rgba(0, 0, 0, 0.1); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .container { padding-top: 80px; /* Account for fixed header */ }
 
-    /* Social link styles */
-    .social-link {
-      display: flex;
-      align-items: center;
-      padding: 1.2rem;
-      border-radius: 15px;
-      text-decoration: none;
-      color: white;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        .language-selector .lang-btn { padding: 0.4rem 0.9rem; margin: 0 0.3rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; border: 1px solid transparent; }
+        .dark-mode .language-selector .lang-btn { color: var(--text-muted-dark); border-color: rgba(255, 255, 255, 0.2); }
+        .light-mode .language-selector .lang-btn { color: var(--text-muted-light); border-color: rgba(0, 0, 0, 0.1); }
+        .language-selector .lang-btn.active, .language-selector .lang-btn:hover { border-color: transparent; background: linear-gradient(45deg, var(--accent-color-dark-1), var(--accent-color-dark-2)); color: #fff; transform: scale(1.05); }
+        .light-mode .language-selector .lang-btn.active, .light-mode .language-selector .lang-btn:hover { background: linear-gradient(45deg, var(--accent-color-light-1), var(--accent-color-light-2)); }
 
-    .social-link:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    }
+        .theme-btn { padding: 0.5rem 1.2rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; border: 1px solid; }
+        .dark-mode .theme-btn { border-color: rgba(255, 255, 255, 0.2); color: var(--text-muted-dark); }
+        .light-mode .theme-btn { border-color: rgba(0, 0, 0, 0.1); color: var(--text-muted-light); }
+        .theme-btn:hover { background: linear-gradient(45deg, var(--accent-color-dark-1), var(--accent-color-dark-2)); border-color: transparent; color: #fff; transform: scale(1.05); }
+        .light-mode .theme-btn:hover { background: linear-gradient(45deg, var(--accent-color-light-1), var(--accent-color-light-2)); }
 
-    /* Warna tombol social link sesuai dengan warna khas di mode terang */
-    .social-link.instagram {
-      background: linear-gradient(45deg, #feda75, #dd2a7b, #8134af, #515bd4);
-    }
+        /* Main Content */
+        .container { flex-grow: 1; display: flex; justify-content: center; align-items: center; padding: 80px 1rem 2rem 1rem; }
 
-    .social-link.youtube {
-      background: #FF0000;
-    }
+        /* Profile Card */
+        .profile-card {
+            width: 100%; max-width: 600px; padding: 3rem; border-radius: 20px; text-align: center; border: 1px solid; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); transition: background-color var(--transition-speed) var(--transition-timing), box-shadow var(--transition-speed) var(--transition-timing), border-color var(--transition-speed) var(--transition-timing); opacity: 0; transform: translateY(20px); animation: fadeInSlideUp 0.8s var(--transition-timing) 0.2s forwards;
+        }
+        .dark-mode .profile-card { background: var(--card-bg-dark); border-color: var(--card-border-dark); box-shadow: var(--shadow-dark); }
+        .light-mode .profile-card { background: var(--card-bg-light); border-color: var(--card-border-light); box-shadow: var(--shadow-light); }
 
-    .social-link.tiktok {
-      background: linear-gradient(45deg, #69C9D0, #EE1D52);
-    }
+        /* Staggered Animations */
+        .profile-image, .profile-name, .profile-tagline, .links-section, .support-section { opacity: 0; transform: translateY(15px); animation: fadeInSlideUp 0.6s var(--transition-timing) forwards; }
+        .profile-image { animation-delay: 0.4s; }
+        .profile-name { animation-delay: 0.5s; }
+        .profile-tagline { animation-delay: 0.6s; }
+        .links-section { animation-delay: 0.7s; }
+        .support-section { animation-delay: 0.8s; }
 
-    .social-link.twitter {
-      background: #000000;
-    }
+        .profile-image { width: 130px; height: 130px; margin: 0 auto 1.8rem auto; border-radius: 50%; overflow: hidden; border: 5px solid; box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); transition: border-color var(--transition-speed) var(--transition-timing); }
+        .dark-mode .profile-image { border-color: rgba(255, 255, 255, 0.3); }
+        .light-mode .profile-image { border-color: rgba(255, 255, 255, 0.8); }
+        .dark-mode .profile-image:hover { border-color: var(--accent-color-dark-2); }
+        .light-mode .profile-image:hover { border-color: var(--accent-color-light-1); }
+        .profile-image img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* Di mode gelap, sedikit penyesuaian brightness agar serasi */
-    body.dark .social-link {
-      filter: brightness(0.9);
-    }
+        .profile-name { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.6rem; letter-spacing: 1px; }
+        .dark-mode .profile-name { color: #fff; }
+        .profile-tagline { font-size: 1rem; font-weight: 300; margin-bottom: 3rem; }
+        .dark-mode .profile-tagline { color: var(--text-muted-dark); }
+        .light-mode .profile-tagline { color: var(--text-muted-light); }
 
-    .social-icon {
-      font-size: 1.4rem;
-      margin-right: 1rem;
-    }
+        /* Links Section */
+        .links-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.2rem; margin-bottom: 3rem; }
+        .link-button { display: flex; align-items: center; justify-content: center; padding: 0.8rem 1rem; border-radius: 10px; font-size: 0.95rem; font-weight: 600; border: 2px solid; background-color: transparent; transition: all var(--transition-speed) var(--transition-timing); }
+        .link-button i { margin-right: 0.8rem; font-size: 1.3em; transition: transform 0.3s ease; }
+        .dark-mode .link-button { border-color: var(--text-muted-dark); color: var(--text-muted-dark); }
+        .light-mode .link-button { border-color: var(--text-muted-light); color: var(--text-muted-light); }
+        .link-button:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); color: #fff !important; border-color: transparent; }
+        .link-button:hover i { transform: scale(1.1); }
+        .link-button.instagram:hover { background-color: var(--color-instagram); }
+        .link-button.youtube:hover { background-color: var(--color-youtube); }
+        .link-button.tiktok:hover { background-color: var(--color-tiktok); }
+        .link-button.twitter:hover { background-color: var(--color-twitter); }
 
-    .donation-section {
-      background: rgba(255,255,255,0.1);
-      padding: 2rem;
-      border-radius: 15px;
-      margin-top: 2rem;
-      text-align: center;
-    }
+        /* Support Section */
+        .support-section { margin-top: 2.5rem; padding: 2rem; border-radius: 15px; transition: background-color var(--transition-speed) var(--transition-timing); }
+        .dark-mode .support-section { background-color: rgba(0, 0, 0, 0.15); }
+        .light-mode .support-section { background-color: rgba(255, 255, 255, 0.1); }
+        .support-section h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.7rem; }
+        .support-section p { font-size: 0.95rem; margin-bottom: 1.5rem; font-weight: 300; }
+        .dark-mode .support-section p { color: var(--text-muted-dark); }
+        .light-mode .support-section p { color: var(--text-muted-light); }
+        .support-button { background-color: var(--color-support); color: #fff !important; border: none; display: inline-flex; min-width: 200px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
+        .support-button:hover { background-color: #27ae60; box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4); }
 
-    /* Penyesuaian donation-section di mode gelap */
-    body.dark .donation-section {
-      background: rgba(255, 255, 255, 0.05);
-    }
+        /* Footer */
+        .app-footer { text-align: center; padding: 2rem 1rem; font-size: 0.8rem; margin-top: auto; letter-spacing: 0.5px; }
+        .dark-mode .app-footer { color: var(--text-muted-dark); }
+        .light-mode .app-footer { color: var(--text-muted-light); }
 
-    .donation-link {
-      display: inline-flex;
-      align-items: center;
-      padding: 1rem 2rem;
-      border-radius: 15px;
-      text-decoration: none;
-      color: white;
-      background: #059669;
-      transition: all 0.3s ease;
-      gap: 0.8rem;
-      margin-top: 1rem;
-    }
+        /* Animations */
+        @keyframes fadeInSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-    .donation-link:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(5, 150, 105, 0.3);
-      background: #048a5b;
-    }
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .app-header { padding: 0.8rem 1.5rem; }
+            .container { padding-top: 70px; }
+            .profile-card { padding: 2rem 1.5rem; margin: 1rem; }
+            .profile-name { font-size: 1.9rem; }
+            .profile-tagline { font-size: 0.95rem; margin-bottom: 2rem; }
+            .links-section { grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2rem; }
+            .support-section { padding: 1.5rem; }
+            .support-section h2 { font-size: 1.3rem; }
+        }
+        @media (max-width: 480px) {
+            .app-header { padding: 0.6rem 1rem; justify-content: center; }
+            .language-selector { display: none; } /* Hide lang on small screens */
+            .container { padding-top: 60px; }
+            .profile-card { padding: 1.5rem 1rem; border-radius: 15px; }
+            .profile-image { width: 100px; height: 100px; margin-bottom: 1.5rem; border-width: 4px; }
+            .profile-name { font-size: 1.6rem; }
+            .profile-tagline { font-size: 0.9rem; }
+            .link-button { font-size: 0.9rem; padding: 0.7rem; }
+            .support-button { min-width: 180px; padding: 0.8rem; }
+            .app-footer { font-size: 0.75rem; }
+        }
+    </style>
+    <!-- === EMBEDDED CSS END === -->
 
-    .theme-toggle {
-      position: fixed;
-      top: 2rem;
-      right: 2rem;
-      background: var(--glass);
-      border: none;
-      padding: 1rem 1.5rem;
-      border-radius: 15px;
-      cursor: pointer;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      transition: all 0.3s ease;
-      color: inherit;
-    }
-
-    /* Penyesuaian theme toggle di mode gelap */
-    body.dark .theme-toggle {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .theme-toggle:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-    }
-
-    .language-switcher {
-      position: fixed;
-      top: 2rem;
-      left: 2rem;
-      display: flex;
-      gap: 0.5rem;
-      background: var(--glass);
-      backdrop-filter: blur(10px);
-      padding: 0.8rem 1.2rem;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .lang-btn {
-      background: none;
-      border: none;
-      color: inherit;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 500;
-    }
-
-    .lang-btn:hover {
-      background: rgba(255,255,255,0.1);
-    }
-
-    .lang-btn.active {
-      background: var(--primary);
-      color: white;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 3rem;
-      opacity: 0.8;
-      font-size: 0.9rem;
-    }
-    @media (max-width: 768px) {
-      .theme-toggle {
-        top: 1rem;
-        right: 1rem;
-        padding: 0.8rem;
-        font-size: 0.9rem;
-      }
-      
-      .language-switcher {
-        top: 1rem;
-        left: 1rem;
-        padding: 0.6rem;
-      }
-      
-      .lang-btn {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
-      }
-
-      .theme-toggle,
-      .language-switcher {
-        z-index: 1000;
-      }
-      
-      .container {
-        margin-top: 4rem;
-        padding: 1.5rem;
-      }
-      
-      .avatar {
-        width: 120px;
-        height: 120px;
-      }
-    }
-  </style>
 </head>
-<body>
-  <div class="language-switcher" id="language-switcher">
-    <button class="lang-btn active" data-lang="en">EN🇺🇸</button>
-    <button class="lang-btn" data-lang="id">ID🇮🇩</button>
-    <button class="lang-btn" data-lang="ms">MS🇲🇾</button>
-  </div>
+<body class="dark-mode"> <!-- Default class, JS will override if needed -->
 
-  <button class="theme-toggle" id="theme-toggle">
-    <i class="fas fa-moon"></i>
-    <span id="theme-text">Dark Mode</span>
-  </button>
+    <header class="app-header">
+        <div class="language-selector">
+            <!-- Added data-lang attribute -->
+            <button class="lang-btn active" data-lang="id">ID</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="ms">MS</button>
+        </div>
+        <button id="theme-toggle" class="theme-btn">
+            <i id="theme-icon" class="fas"></i>
+            <!-- Added data-lang-key for theme button text -->
+            <span id="theme-text" data-lang-key="theme_toggle"></span>
+        </button>
+    </header>
 
-  <div class="container">
-    <section class="profile-section">
-      <img src="profile picture.jpg" alt="Profile" class="avatar">
-      <h1 class="title">A.H 5.1</h1>
-      <p class="bio" id="bio">Digital creator connecting through technology and humor</p>
-    </section>
+    <main class="container">
+        <div class="profile-card">
+            <div class="profile-image">
+                <img src="profile picture.jpg" alt="Profile Picture A.H 5.1">
+            </div>
 
-    <div class="links-grid">
-      <a href="https://instagram.com/a.h_5.1_sdn_bhd" class="social-link instagram">
-        <i class="fab fa-instagram social-icon"></i> Instagram
-      </a>
-      <a href="https://youtube.com/@A.H_5.1" class="social-link youtube">
-        <i class="fab fa-youtube social-icon"></i> YouTube
-      </a>
-      <a href="https://tiktok.com/@intel_uhd_graphics" class="social-link tiktok">
-        <i class="fab fa-tiktok social-icon"></i> TikTok
-      </a>
-      <a href="https://twitter.com/@absurd_humor_51" class="social-link twitter">
-        <i class="fab fa-x-twitter social-icon"></i> X
-      </a>
-    </div>
+            <h1 class="profile-name">A.H 5.1</h1>
+             <!-- *** UPDATED HTML TAGLINE (ID version) *** -->
+            <p class="profile-tagline" data-lang-key="tagline">Halo semuanya! Selamat datang di markas digital saya. Di sini kalian bisa nemuin semua link media sosial tempat saya beraksi. Jangan lupa dukung saya biar bisa terus bikin konten seru, ya!</p>
 
-    <section class="donation-section">
-      <h2 id="donation-title">Support Me</h2>
-      <div class="donation-methods">
-        <p id="donation-text">Like my content? Support me through:</p>
-        <a href="https://sociabuzz.com/ah51" class="donation-link" target="_blank">
-          <i class="fas fa-hand-holding-heart"></i>
-          <span>Sociabuzz</span>
-        </a>
-      </div>
-    </section>
+            <section class="links-section">
+                 <!-- Link text is usually kept consistent, but you *could* add data-lang-key here too -->
+                <a href="https://instagram.com/a.h_5.1_sdn_bhd" target="_blank" class="link-button instagram">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://youtube.com/@A.H_5.1" target="_blank" class="link-button youtube">
+                    <i class="fab fa-youtube"></i> YouTube
+                </a>
+                <a href="https://tiktok.com/@intel_uhd_graphics" target="_blank" class="link-button tiktok">
+                    <i class="fab fa-tiktok"></i> TikTok
+                </a>
+                <a href="https://twitter.com/absurd_humor_51" target="_blank" class="link-button twitter">
+                    <i class="fab fa-x-twitter"></i> Twitter (X)
+                </a>
+            </section>
 
-    <footer class="footer">
-      <p id="footer-text">© 2025 A.H 5.1 | All rights reserved</p>
+            <section class="support-section">
+                 <!-- Added data-lang-key -->
+                <h2 data-lang-key="support_heading">Dukung Saya</h2>
+                 <!-- Added data-lang-key -->
+                <p data-lang-key="support_para">Suka dengan konten saya? Dukung saya melalui:</p>
+                <a href="#" target="_blank" class="link-button support-button">
+                    <i class="fas fa-hand-holding-heart"></i> Sociabuzz
+                </a>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <p data-lang-key="copyright">© <span id="year"></span> A.H 5.1 | All rights reserved</p>
     </footer>
-  </div>
 
-  <script>
-    const translations = {
-      en: {
-        bio: "Digital creator connecting through technology and humor",
-        donationTitle: "Support Me",
-        donationText: "Like my content? Support me through:",
-        footer: "© 2025 A.H 5.1 | All rights reserved",
-        themeText: ["Dark Mode", "Light Mode"]
-      },
-      id: {
-        bio: "Kreator digital yang menghubungkan melalui teknologi dan humor",
-        donationTitle: "Dukung Saya",
-        donationText: "Suka dengan konten saya? Dukung saya melalui:",
-        footer: "© 2025 A.H 5.1 | All rights reserved",
-        themeText: ["Mode Gelap", "Mode Terang"]
-      },
-      ms: {
-        bio: "Pencipta digital yang berhubung melalui teknologi dan humor",
-        donationTitle: "Sokong Saya",
-        donationText: "Suka kandungan saya? Sokong saya melalui:",
-        footer: "© 2025 A.H 5.1 | All rights reserved",
-        themeText: ["Mode Gelap", "Mode Cerah"]
-      }
-    };
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggleButton = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+            const body = document.body;
+            const currentYearSpan = document.getElementById('year');
+            const langButtons = document.querySelectorAll('.language-selector .lang-btn');
+            const translatableElements = document.querySelectorAll('[data-lang-key]');
+            const htmlTag = document.documentElement;
 
-    // Theme Toggle Logic
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeText = document.getElementById('theme-text');
-    const body = document.body;
+            const translations = {
+                id: {
+                    tagline: "Halo semuanya! Selamat datang di markas digital saya. Di sini kalian bisa nemuin semua link media sosial tempat saya beraksi. Jangan lupa dukung saya biar bisa terus bikin konten seru, ya!",
+                    support_heading: "Dukung Saya",
+                    support_para: "Suka dengan konten saya? Dukung saya melalui:",
+                    theme_toggle_light: "Mode Terang",
+                    theme_toggle_dark: "Mode Gelap",
+                    copyright: `© ${new Date().getFullYear()} A.H 5.1 | Hak cipta dilindungi`
+                },
+                en: {
+                     // *** ADDED EN TAGLINE ***
+                    tagline: "Hello everyone! Welcome to my digital headquarters. Here you can find all the social media links where I'm active. Don't forget to support me so I can keep creating exciting content!",
+                    support_heading: "Support Me",
+                    support_para: "Like my content? Support me via:",
+                    theme_toggle_light: "Light Mode",
+                    theme_toggle_dark: "Dark Mode",
+                    copyright: `© ${new Date().getFullYear()} A.H 5.1 | All rights reserved`
+                },
+                ms: {
+                     // *** ADDED MS TAGLINE ***
+                    tagline: "Helo semua! Selamat datang ke ibu pejabat digital saya. Di sini anda boleh menemui semua pautan media sosial tempat saya beraksi. Jangan lupa sokong saya supaya saya boleh terus mencipta kandungan yang menarik, ya!",
+                    support_heading: "Sokong Saya",
+                    support_para: "Suka dengan kandungan saya? Sokong saya melalui:",
+                    theme_toggle_light: "Mod Cerah",
+                    theme_toggle_dark: "Mod Gelap",
+                    copyright: `© ${new Date().getFullYear()} A.H 5.1 | Hak cipta terpelihara`
+                }
+            };
 
-    // Language Switcher Logic
-    const langButtons = document.querySelectorAll('.lang-btn');
-    
-    function updateContent(lang) {
-      document.getElementById('bio').textContent = translations[lang].bio;
-      document.getElementById('donation-title').textContent = translations[lang].donationTitle;
-      document.getElementById('donation-text').textContent = translations[lang].donationText;
-      document.getElementById('footer-text').textContent = translations[lang].footer;
-      
-      // Update theme text
-      const isDark = body.classList.contains('dark');
-      themeText.textContent = translations[lang].themeText[isDark ? 1 : 0];
-    }
+            let currentTheme = 'dark'; // Default, will be updated
+            let currentLang = 'id';   // Default, will be updated
 
-    langButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        langButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        const lang = button.dataset.lang;
-        localStorage.setItem('lang', lang);
-        updateContent(lang);
-      });
-    });
 
-    // Theme Toggle
-    themeToggle.addEventListener('click', () => {
-      body.classList.toggle('dark');
-      const isDark = body.classList.contains('dark');
-      const lang = document.querySelector('.lang-btn.active').dataset.lang;
-      
-      // Update icon and text
-      themeToggle.querySelector('i').classList.toggle('fa-moon');
-      themeToggle.querySelector('i').classList.toggle('fa-sun');
-      themeText.textContent = translations[lang].themeText[isDark ? 1 : 0];
-      
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
+            const setLanguage = (lang) => {
+                if (!translations[lang]) {
+                    console.warn(`Language "${lang}" not found in translations.`);
+                    return; // Exit if language doesn't exist
+                }
+                currentLang = lang; // Update global state
 
-    // Initialize
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    const savedLang = localStorage.getItem('lang') || 'en';
-    
-    if (savedTheme === 'dark') {
-      body.classList.add('dark');
-      themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
-    }
-    
-    document.querySelector(`[data-lang="${savedLang}"]`).classList.add('active');
-    updateContent(savedLang);
-    themeText.textContent = translations[savedLang].themeText[savedTheme === 'dark' ? 1 : 0];
-  </script>
+                translatableElements.forEach(element => {
+                    const key = element.getAttribute('data-lang-key');
+                    let text;
+
+                    if (key === 'theme_toggle') {
+                        const themeKey = currentTheme === 'dark' ? 'theme_toggle_light' : 'theme_toggle_dark';
+                        text = translations[lang][themeKey];
+                    } else {
+                        text = translations[lang][key];
+                    }
+
+                    if (text !== undefined) {
+                        if (key === 'copyright' && element.querySelector('#year')) {
+                           element.innerHTML = text; // Use innerHTML to keep the span
+                        } else {
+                           element.textContent = text;
+                        }
+                    } else {
+                        console.warn(`Key "${key}" not found for language "${lang}"`);
+                    }
+                });
+
+                langButtons.forEach(btn => {
+                    if (btn.getAttribute('data-lang') === lang) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                htmlTag.setAttribute('lang', lang);
+
+                localStorage.setItem('language', lang);
+                console.log(`Language set to: ${lang}`);
+            };
+
+
+            const applyTheme = (theme) => {
+                currentTheme = theme; // Update global state
+
+                if (theme === 'dark') {
+                    body.classList.add('dark-mode');
+                    body.classList.remove('light-mode');
+                    themeIcon.className = 'fas fa-sun'; // Sun icon for dark mode
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    body.classList.add('light-mode');
+                    body.classList.remove('dark-mode');
+                    themeIcon.className = 'fas fa-moon'; // Moon icon for light mode
+                    localStorage.setItem('theme', 'light');
+                }
+                setLanguage(currentLang);
+            };
+
+
+
+            const savedTheme = localStorage.getItem('theme');
+            const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const initialTheme = savedTheme ? savedTheme : (userPrefersDark ? 'dark' : 'light');
+            applyTheme(initialTheme); // Apply theme first
+
+            const savedLang = localStorage.getItem('language');
+            const browserLang = navigator.language.split('-')[0]; // e.g., 'en-US' -> 'en'
+            const initialLang = savedLang ? savedLang : (translations[browserLang] ? browserLang : 'id');
+            setLanguage(initialLang); // Apply language after theme is set
+
+            const currentYear = new Date().getFullYear();
+
+
+            themeToggleButton.addEventListener('click', () => {
+                const newTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
+                applyTheme(newTheme);
+            });
+
+            langButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const selectedLang = button.getAttribute('data-lang');
+                    if (selectedLang !== currentLang) { // Only change if different
+                       setLanguage(selectedLang);
+                    }
+                });
+            });
+
+        });
+    </script>
+
 </body>
 </html>
