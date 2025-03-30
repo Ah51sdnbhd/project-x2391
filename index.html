@@ -174,21 +174,18 @@
             .app-footer { font-size: 0.75rem; }
         }
     </style>
-    <!-- === EMBEDDED CSS END === -->
 
 </head>
-<body class="dark-mode"> <!-- Default class, JS will override if needed -->
+<body class="dark-mode"> 
 
     <header class="app-header">
         <div class="language-selector">
-            <!-- Added data-lang attribute -->
             <button class="lang-btn active" data-lang="id">ID</button>
             <button class="lang-btn" data-lang="en">EN</button>
             <button class="lang-btn" data-lang="ms">MS</button>
         </div>
         <button id="theme-toggle" class="theme-btn">
             <i id="theme-icon" class="fas"></i>
-            <!-- Added data-lang-key for theme button text -->
             <span id="theme-text" data-lang-key="theme_toggle"></span>
         </button>
     </header>
@@ -196,15 +193,13 @@
     <main class="container">
         <div class="profile-card">
             <div class="profile-image">
-                <img src="profile picture.jpg" alt="Profile Picture A.H 5.1">
+                <img src="profile picture.png" alt="Profile Picture A.H 5.1">
             </div>
 
             <h1 class="profile-name">A.H 5.1</h1>
-             <!-- *** UPDATED HTML TAGLINE (ID version) *** -->
             <p class="profile-tagline" data-lang-key="tagline">Halo semuanya! Selamat datang di markas digital saya. Di sini kalian bisa nemuin semua link media sosial tempat saya beraksi. Jangan lupa dukung saya biar bisa terus bikin konten seru, ya!</p>
 
             <section class="links-section">
-                 <!-- Link text is usually kept consistent, but you *could* add data-lang-key here too -->
                 <a href="https://instagram.com/a.h_5.1_sdn_bhd" target="_blank" class="link-button instagram">
                     <i class="fab fa-instagram"></i> Instagram
                 </a>
@@ -220,9 +215,7 @@
             </section>
 
             <section class="support-section">
-                 <!-- Added data-lang-key -->
                 <h2 data-lang-key="support_heading">Dukung Saya</h2>
-                 <!-- Added data-lang-key -->
                 <p data-lang-key="support_para">Suka dengan konten saya? Dukung saya melalui:</p>
                 <a href="https://sociabuzz.com/ah51" target="_blank" class="link-button support-button">
                     <i class="fas fa-hand-holding-heart"></i> Sociabuzz
@@ -267,7 +260,7 @@
                 },
                 ms: {
                      // *** ADDED MS TAGLINE ***
-                    tagline: "Helo semua! Selamat datang ke ibu pejabat digital saya. Di sini anda boleh menemui semua pautan media sosial tempat saya beraksi. Jangan lupa sokong saya supaya saya boleh terus mencipta kandungan yang menarik, ya!",
+                    tagline: "Hai semua! Selamat datang kat markas digital aku. Kat sini, korang boleh jumpa semua link media sosial tempat aku lepak dan buat content. Jangan lupa support aku supaya aku boleh terus hasilkan content yang best, okay!",
                     support_heading: "Sokong Saya",
                     support_para: "Suka dengan kandungan saya? Sokong saya melalui:",
                     theme_toggle_light: "Mod Cerah",
