@@ -146,12 +146,6 @@
         .app-footer { text-align: center; padding: 2rem 1rem; font-size: 0.8rem; margin-top: auto; letter-spacing: 0.5px; }
         .dark-mode .app-footer { color: var(--text-muted-dark); }
         .light-mode .app-footer { color: var(--text-muted-light); }
-        .visitor-counter {
-  font-size: 0.75rem;
-  text-align: center;
-  color: var(--muted-text-color); /* ikut tema sedia ada */
-  margin-top: 1rem;
-        }
 
         /* Animations */
         @keyframes fadeInSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -232,7 +226,7 @@
     </main>
 
     <footer class="app-footer">
-        <p class="visitor-counter">Jumlah pelawat: <span id="visitor-count">...</span></p>
+        <p>Jumlah pelawat: <img src="https://hits.sh/ah51.github.io/project-x2391.svg?style=flat-square&label=Visitors&color=blue" alt="Visitor counter"></p>
         <p data-lang-key="copyright">© <span id="year"></span> A.H 5.1 | All rights reserved</p>
     </footer>
 
@@ -366,12 +360,7 @@
                     if (selectedLang !== currentLang) { // Only change if different
                        setLanguage(selectedLang);
                     }
-                    // === Visitor Counter (Footer) ===
-fetch('https://api.countapi.xyz/hit/ah51-website/visits')
-  .then(response => response.json())
-  .then(data => {
-    document.getElementById('visitor-count').textContent = data.value;
-  });
+                    
                 });
             });
 
