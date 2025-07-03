@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.H 5.1 | Elegant Digital Hub</title>
+    <title>A.H 5.1 | personal web</title>
 
     <!-- Google Fonts (Poppins) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,222 +12,167 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- === EMBEDDED CSS START === -->
     <style>
         /* CSS Variables */
         :root {
             --font-primary: 'Poppins', sans-serif;
-            --transition-speed: 0.4s;
-            --transition-timing: cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth transition */
-
+            --transition-speed-fast: 0.3s;
+            --transition-speed-slow: 0.5s;
+            --transition-timing: cubic-bezier(0.2, 0.8, 0.2, 1);
+            
             /* Dark Mode Colors */
-            --bg-gradient-dark: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-            --card-bg-dark: rgba(22, 33, 62, 0.65); /* Semi-transparent for glassmorphism */
-            --card-border-dark: rgba(255, 255, 255, 0.15);
-            --text-color-dark: #e8e8e8;
-            --text-muted-dark: #a0a8b8;
-            --accent-color-dark-1: #4a00e0; /* Vibrant accent */
-            --accent-color-dark-2: #8e2de2;
-            --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.3);
-
+            --bg-color-dark: #020024;
+            --card-bg-dark: rgba(10, 10, 30, 0.55);
+            --card-border-dark: rgba(255, 255, 255, 0.1);
+            --text-color-dark: #EAEAEA;
+            --text-muted-dark: #AAB2C0;
+            --shadow-dark: 0 10px 40px rgba(0, 0, 0, 0.4);
+            --aurora-1-dark: #4a00e0;
+            --aurora-2-dark: #8e2de2;
+            --aurora-3-dark: #1E3A8A; 
+            
             /* Light Mode Colors */
-            --bg-gradient-light: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            --card-bg-light: rgba(255, 255, 255, 0.6); /* Semi-transparent */
-            --card-border-light: rgba(255, 255, 255, 0.4);
-            --text-color-light: #2c3e50;
-            --text-muted-light: #5a6a7a;
-            --accent-color-light-1: #007bff;
-            --accent-color-light-2: #6610f2; /* Purple accent */
-            --shadow-light: 0 8px 32px rgba(100, 100, 150, 0.2);
-
-            /* Shared Brand Colors */
-            --color-instagram: #E4405F;
-            --color-youtube: #FF0000;
-            --color-tiktok: #000000; /* Simple black for elegance */
-            --color-twitter: #1DA1F2;
-            --color-support: #2ecc71;
+            --bg-color-light: #f0f4f8;
+            --card-bg-light: rgba(255, 255, 255, 0.65);
+            --card-border-light: rgba(255, 255, 255, 0.7);
+            --text-color-light: #1c2a38;
+            --text-muted-light: #5a6a7a; /* Tetap untuk tagline, dll */
+            --shadow-light: 0 10px 40px rgba(100, 100, 150, 0.25);
+            --aurora-1-light: #007bff;
+            --aurora-2-light: #89CFF0;
+            --aurora-3-light: #A7C7E7;
+            
+            /* Brand Gradients */
+            --gradient-instagram: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            --gradient-youtube: linear-gradient(45deg, #FF0000, #c00);
+            --gradient-tiktok: linear-gradient(45deg, #25f4ee, #000, #fe2c55);
+            --gradient-twitter: linear-gradient(45deg, #282828, #000000);
+            --gradient-support: linear-gradient(45deg, #2ecc71, #27ae60);
         }
 
-        /* Global Reset & Base Styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* --- Global Styles --- */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
             font-family: var(--font-primary);
-            line-height: 1.7;
+            line-height: 1.6;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            transition: background var(--transition-speed) var(--transition-timing), color var(--transition-speed) var(--transition-timing);
-            background-attachment: fixed;
-            overflow-x: hidden;
+            display: flex; flex-direction: column;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: background-color var(--transition-speed-slow), color var(--transition-speed-slow);
+            overflow-x: hidden; position: relative;
         }
-        body.dark-mode { background: var(--bg-gradient-dark); color: var(--text-color-dark); }
-        body.light-mode { background: var(--bg-gradient-light); color: var(--text-color-light); }
-        img { max-width: 100%; display: block; }
-        a { text-decoration: none; color: inherit; }
-        button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; transition: all var(--transition-speed) var(--transition-timing); }
-
-        /* Header */
-        .app-header {
-            position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2.5rem; z-index: 100; background: rgba(0, 0, 0, 0.1); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        body::before {
+            content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 10% 20%, var(--aurora-1) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 30%, var(--aurora-2) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 90%, var(--aurora-3) 0%, transparent 45%);
+            filter: blur(80px); opacity: 0.6;
+            animation: animateAurora 25s cubic-bezier(0.5, 0, 0.5, 1) infinite alternate;
+            z-index: -1; transition: opacity var(--transition-speed-slow);
         }
-        .container { padding-top: 80px; /* Account for fixed header */ }
+        @keyframes animateAurora { 0% { transform: rotate(0deg) scale(1.2); } 100% { transform: rotate(15deg) scale(1.5); } }
 
-        .language-selector .lang-btn { padding: 0.4rem 0.9rem; margin: 0 0.3rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; border: 1px solid transparent; }
-        .dark-mode .language-selector .lang-btn { color: var(--text-muted-dark); border-color: rgba(255, 255, 255, 0.2); }
-        .light-mode .language-selector .lang-btn { color: var(--text-muted-light); border-color: rgba(0, 0, 0, 0.1); }
-        .language-selector .lang-btn.active, .language-selector .lang-btn:hover { border-color: transparent; background: linear-gradient(45deg, var(--accent-color-dark-1), var(--accent-color-dark-2)); color: #fff; transform: scale(1.05); }
-        .light-mode .language-selector .lang-btn.active, .light-mode .language-selector .lang-btn:hover { background: linear-gradient(45deg, var(--accent-color-light-1), var(--accent-color-light-2)); }
-
-        .theme-btn { padding: 0.5rem 1.2rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; border: 1px solid; }
-        .dark-mode .theme-btn { border-color: rgba(255, 255, 255, 0.2); color: var(--text-muted-dark); }
-        .light-mode .theme-btn { border-color: rgba(0, 0, 0, 0.1); color: var(--text-muted-light); }
-        .theme-btn:hover { background: linear-gradient(45deg, var(--accent-color-dark-1), var(--accent-color-dark-2)); border-color: transparent; color: #fff; transform: scale(1.05); }
-        .light-mode .theme-btn:hover { background: linear-gradient(45deg, var(--accent-color-light-1), var(--accent-color-light-2)); }
-
-        /* Main Content */
-        .container { flex-grow: 1; display: flex; justify-content: center; align-items: center; padding: 80px 1rem 2rem 1rem; }
-
-        /* Profile Card */
-        .profile-card {
-            width: 100%; max-width: 600px; padding: 3rem; border-radius: 20px; text-align: center; border: 1px solid; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); transition: background-color var(--transition-speed) var(--transition-timing), box-shadow var(--transition-speed) var(--transition-timing), border-color var(--transition-speed) var(--transition-timing); opacity: 0; transform: translateY(20px); animation: fadeInSlideUp 0.8s var(--transition-timing) 0.2s forwards;
+        /* --- PERUBAHAN & PENAMBAHAN: Variabel Spesifik untuk Tombol --- */
+        body.dark-mode { 
+            --bg-color: var(--bg-color-dark); --text-color: var(--text-color-dark);
+            --aurora-1: var(--aurora-1-dark); --aurora-2: var(--aurora-2-dark); --aurora-3: var(--aurora-3-dark);
+            --button-text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            /* Warna teks tombol di mode gelap: dibuat lebih cerah/putih */
+            --button-text-color: #E0E0E0; 
         }
-        .dark-mode .profile-card { background: var(--card-bg-dark); border-color: var(--card-border-dark); box-shadow: var(--shadow-dark); }
-        .light-mode .profile-card { background: var(--card-bg-light); border-color: var(--card-border-light); box-shadow: var(--shadow-light); }
-
-        /* Staggered Animations */
-        .profile-image, .profile-name, .profile-tagline, .links-section, .support-section { opacity: 0; transform: translateY(15px); animation: fadeInSlideUp 0.6s var(--transition-timing) forwards; }
-        .profile-image { animation-delay: 0.4s; }
-        .profile-name { animation-delay: 0.5s; }
-        .profile-tagline { animation-delay: 0.6s; }
-        .links-section { animation-delay: 0.7s; }
-        .support-section { animation-delay: 0.8s; }
-
-        .profile-image { width: 130px; height: 130px; margin: 0 auto 1.8rem auto; border-radius: 50%; overflow: hidden; border: 5px solid; box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); transition: border-color var(--transition-speed) var(--transition-timing); }
-        .dark-mode .profile-image { border-color: rgba(255, 255, 255, 0.3); }
-        .light-mode .profile-image { border-color: rgba(255, 255, 255, 0.8); }
-        .dark-mode .profile-image:hover { border-color: var(--accent-color-dark-2); }
-        .light-mode .profile-image:hover { border-color: var(--accent-color-light-1); }
-        .profile-image img { width: 100%; height: 100%; object-fit: cover; }
-
-        .profile-name { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.6rem; letter-spacing: 1px; }
-        .dark-mode .profile-name { color: #fff; }
-        .profile-tagline { font-size: 1rem; font-weight: 300; margin-bottom: 3rem; }
-        .dark-mode .profile-tagline { color: var(--text-muted-dark); }
-        .light-mode .profile-tagline { color: var(--text-muted-light); }
-
-        /* Links Section */
-        .links-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.2rem; margin-bottom: 3rem; }
-        .link-button { display: flex; align-items: center; justify-content: center; padding: 0.8rem 1rem; border-radius: 10px; font-size: 0.95rem; font-weight: 600; border: 2px solid; background-color: transparent; transition: all var(--transition-speed) var(--transition-timing); }
-        .link-button i { margin-right: 0.8rem; font-size: 1.3em; transition: transform 0.3s ease; }
-        .dark-mode .link-button { border-color: var(--text-muted-dark); color: var(--text-muted-dark); }
-        .light-mode .link-button { border-color: var(--text-muted-light); color: var(--text-muted-light); }
-        .link-button:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); color: #fff !important; border-color: transparent; }
-        .link-button:hover i { transform: scale(1.1); }
-        .link-button.instagram:hover { background-color: var(--color-instagram); }
-        .link-button.youtube:hover { background-color: var(--color-youtube); }
-        .link-button.tiktok:hover { background-color: var(--color-tiktok); }
-        .link-button.twitter:hover { background-color: var(--color-twitter); }
-
-        /* Support Section */
-        .support-section { margin-top: 2.5rem; padding: 2rem; border-radius: 15px; transition: background-color var(--transition-speed) var(--transition-timing); }
-        .dark-mode .support-section { background-color: rgba(0, 0, 0, 0.15); }
-        .light-mode .support-section { background-color: rgba(255, 255, 255, 0.1); }
-        .support-section h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.7rem; }
-        .support-section p { font-size: 0.95rem; margin-bottom: 1.5rem; font-weight: 300; }
-        .dark-mode .support-section p { color: var(--text-muted-dark); }
-        .light-mode .support-section p { color: var(--text-muted-light); }
-        .support-button { background-color: var(--color-support); color: #fff !important; border: none; display: inline-flex; min-width: 200px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
-        .support-button:hover { background-color: #27ae60; box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4); }
-
-        /* Footer */
-        .app-footer { text-align: center; padding: 2rem 1rem; font-size: 0.8rem; margin-top: auto; letter-spacing: 0.5px; }
-        .dark-mode .app-footer { color: var(--text-muted-dark); }
-        .light-mode .app-footer { color: var(--text-muted-light); }
-
-        /* Animations */
-        @keyframes fadeInSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Responsiveness */
-        @media (max-width: 768px) {
-            .app-header { padding: 0.8rem 1.5rem; }
-            .container { padding-top: 70px; }
-            .profile-card { padding: 2rem 1.5rem; margin: 1rem; }
-            .profile-name { font-size: 1.9rem; }
-            .profile-tagline { font-size: 0.95rem; margin-bottom: 2rem; }
-            .links-section { grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2rem; }
-            .support-section { padding: 1.5rem; }
-            .support-section h2 { font-size: 1.3rem; }
+        body.light-mode {
+            --bg-color: var(--bg-color-light); --text-color: var(--text-color-light);
+            --aurora-1: var(--aurora-1-light); --aurora-2: var(--aurora-2-light); --aurora-3: var(--aurora-3-light);
+            --button-text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+             /* Warna teks tombol di mode terang: dibuat sangat gelap untuk kontras */
+            --button-text-color: #E0E0E0;
         }
-        @media (max-width: 480px) {
-            .app-header { padding: 0.6rem 1rem; justify-content: center; }
-            .language-selector { display: none; } /* Hide lang on small screens */
-            .container { padding-top: 60px; }
-            .profile-card { padding: 1.5rem 1rem; border-radius: 15px; }
-            .profile-image { width: 100px; height: 100px; margin-bottom: 1.5rem; border-width: 4px; }
-            .profile-name { font-size: 1.6rem; }
-            .profile-tagline { font-size: 0.9rem; }
-            .link-button { font-size: 0.9rem; padding: 0.7rem; }
-            .support-button { min-width: 180px; padding: 0.8rem; }
-            .app-footer { font-size: 0.75rem; }
+
+        img { max-width: 100%; display: block; } a { text-decoration: none; color: inherit; } button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; transition: all var(--transition-speed-fast) var(--transition-timing); } main { flex-grow: 1; display: flex; justify-content: center; align-items: center; padding: 5rem 1rem 4rem; }
+        .app-controls { position: fixed; top: 20px; right: 20px; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.75rem; z-index: 100; } .control-btn { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 0.5rem; transition: all var(--transition-speed-fast) ease; } .control-btn:hover { transform: translateY(-2px); background: rgba(255, 255, 255, 0.2); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); } body.light-mode .control-btn { background: rgba(230, 230, 250, 0.2); border: 1px solid rgba(0, 0, 0, 0.1); color: var(--text-muted-light); } .lang-btn { padding: 0.5rem; width: 42px; height: 42px; justify-content: center; font-weight: 600; border-radius: 50%; } .lang-btn.active { background: linear-gradient(45deg, var(--aurora-1), var(--aurora-2)); color: white; border-color: transparent; text-shadow: none; }
+        .profile-card { width: 100%; max-width: 580px; padding: 2.5rem 3rem; text-align: center; border-radius: 25px; position: relative; overflow: hidden; opacity: 0; transform: translateY(20px); animation: fadeInSlideUp 0.8s var(--transition-timing) 0.2s forwards; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); } body.dark-mode .profile-card { background: var(--card-bg-dark); box-shadow: var(--shadow-dark); border: 1px solid var(--card-border-dark); } body.light-mode .profile-card { background: var(--card-bg-light); box-shadow: var(--shadow-light); border: 1px solid var(--card-border-light); } .profile-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: 25px; padding: 1.5px; background: linear-gradient(145deg, var(--aurora-1), var(--aurora-2), var(--aurora-3)); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+        .profile-image-wrapper { width: 130px; height: 130px; margin: 0 auto 1.5rem auto; border-radius: 50%; padding: 5px; background: linear-gradient(45deg, var(--aurora-1), var(--aurora-2)); transition: transform var(--transition-speed-fast) ease; } .profile-image-wrapper:hover { transform: scale(1.05); } .profile-image { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; } .profile-image img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-name { font-size: 2.2rem; font-weight: 700; letter-spacing: 1px; color: var(--text-color); text-shadow: 0 0 15px rgba(0, 0, 0, 0.2); } .profile-tagline { font-size: 1rem; font-weight: 300; margin-bottom: 2.5rem; color: var(--text-muted); text-shadow: 0 0 10px rgba(0, 0, 0, 0.1); } body.dark-mode .profile-tagline { color: var(--text-muted-dark); } body.light-mode .profile-tagline { color: var(--text-muted-light); }
+        .profile-image-wrapper, .profile-name, .profile-tagline, .links-section, .support-section { opacity: 0; transform: translateY(15px); animation: fadeInSlideUp 0.6s var(--transition-timing) forwards; } .profile-image-wrapper { animation-delay: 0.4s; } .profile-name { animation-delay: 0.5s; } .profile-tagline { animation-delay: 0.6s; } .links-section { animation-delay: 0.7s; } .support-section { animation-delay: 0.8s; }
+        
+        .links-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+        .link-button {
+            display: flex; align-items: center; justify-content: center; padding: 0.9rem 1rem;
+            border-radius: 12px; font-size: 0.95rem; font-weight: 500;
+            /* PERUBAHAN: Menggunakan variabel baru untuk warna teks tombol */
+            color: var(--button-text-color);
+            backdrop-filter: blur(5px); position: relative; overflow: hidden; z-index: 1; border: 1px solid;
+            background: var(--hover-bg); background-size: 250% 100%; background-position: 99% 50%;
+            text-shadow: var(--button-text-shadow);
+            transition: background-position 0.6s var(--transition-timing), color 0.4s ease, transform 0.3s ease, text-shadow 0.4s ease;
         }
+        /* PERUBAHAN: Menghapus aturan warna yang sudah ditangani variabel */
+        body.dark-mode .link-button { border-color: var(--card-border-dark); }
+        body.light-mode .link-button { border-color: rgba(0, 0, 0, 0.15); }
+
+        .link-button:hover { color: #fff; border-color: transparent; transform: translateY(-3px); background-position: 0% 50%; text-shadow: none; }
+        .link-button i { margin-right: 0.75rem; font-size: 1.2em; } .link-button.instagram { --hover-bg: var(--gradient-instagram); } .link-button.youtube { --hover-bg: var(--gradient-youtube); } .link-button.tiktok { --hover-bg: var(--gradient-tiktok); } .link-button.twitter { --hover-bg: var(--gradient-twitter); }
+        .support-section { margin-top: 2rem; padding: 1.5rem; border-radius: 15px; background: rgba(0, 0, 0, 0.1); } .support-section h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem; } .support-section p { font-size: 0.9rem; margin-bottom: 1.25rem; } body.dark-mode .support-section p { color: var(--text-muted-dark); } body.light-mode .support-section p { color: var(--text-muted-light); }
+        .support-button { --hover-bg: var(--gradient-support); max-width: 250px; margin: 0 auto; width: 100%; }
+        .app-footer { text-align: center; padding: 2rem 1rem; font-size: 0.85rem; margin-top: auto; letter-spacing: 0.5px; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; } body.dark-mode .app-footer { color: var(--text-muted-dark); } body.light-mode .app-footer { color: var(--text-muted-light); } .app-footer img { border-radius: 4px; } @keyframes fadeInSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } } @media (max-width: 768px) { .app-controls { top: 15px; right: 15px; } main { padding: 6rem 1rem 3rem; } .profile-card { padding: 2rem 1.5rem; } .profile-name { font-size: 1.9rem; } } @media (max-width: 540px) { .links-section { grid-template-columns: 1fr; } } @media (max-width: 480px) { .app-controls { width: calc(100% - 20px); top: 10px; right: 10px; gap: 0.5rem;} .theme-text-label { display: none; } .profile-card { padding: 2rem 1rem; border-radius: 20px; } .profile-image-wrapper { width: 100px; height: 100px; padding: 4px; } .profile-name { font-size: 1.7rem; } }
     </style>
-
 </head>
-<body class="dark-mode"> 
-
-    <header class="app-header">
-        <div class="language-selector">
-            <button class="lang-btn active" data-lang="id">ID</button>
-            <button class="lang-btn" data-lang="en">EN</button>
-            <button class="lang-btn" data-lang="ms">MS</button>
-        </div>
-        <button id="theme-toggle" class="theme-btn">
+<body class="light-mode">
+    <header class="app-controls">
+        <button class="lang-btn control-btn" data-lang="id">ID</button>
+        <button class="lang-btn control-btn" data-lang="en">EN</button>
+        <button class="lang-btn control-btn" data-lang="ms">MS</button>
+        <button id="theme-toggle" class="control-btn">
             <i id="theme-icon" class="fas"></i>
-            <span id="theme-text" data-lang-key="theme_toggle"></span>
+            <span id="theme-text" class="theme-text-label"></span>
         </button>
     </header>
 
-    <main class="container">
+    <main>
         <div class="profile-card">
-            <div class="profile-image">
-                <img src="profile picture.png" alt="Profile Picture A.H 5.1">
+            <div class="profile-image-wrapper">
+                <div class="profile-image">
+                     <!-- Pastikan Anda mengganti ini kembali ke path gambar Anda -->
+                    <img src="profile picture.png" alt="Foto Profil A.H 5.1">
+                </div>
             </div>
 
             <h1 class="profile-name">A.H 5.1</h1>
-            <p class="profile-tagline" data-lang-key="tagline">Halo semuanya! Selamat datang di markas digital saya. Di sini kalian bisa nemuin semua link media sosial tempat saya beraksi. Jangan lupa dukung saya biar bisa terus bikin konten seru, ya!</p>
+            <p class="profile-tagline" data-lang-key="tagline"></p>
 
             <section class="links-section">
-                <a href="https://instagram.com/a.h_5.1" target="_blank" class="link-button instagram">
+                <a href="https://instagram.com/a.h_5.1" target="_blank" rel="noopener noreferrer" class="link-button instagram">
                     <i class="fab fa-instagram"></i> Instagram
                 </a>
-                <a href="https://youtube.com/@A.H_5.1" target="_blank" class="link-button youtube">
+                <a href="https://youtube.com/@A.H_5.1" target="_blank" rel="noopener noreferrer" class="link-button youtube">
                     <i class="fab fa-youtube"></i> YouTube
                 </a>
-                <a href="https://tiktok.com/@intel_uhd_graphics" target="_blank" class="link-button tiktok">
+                <a href="https://tiktok.com/@intel_uhd_graphics" target="_blank" rel="noopener noreferrer" class="link-button tiktok">
                     <i class="fab fa-tiktok"></i> TikTok
                 </a>
-                <a href="https://twitter.com/absurd_humor_51" target="_blank" class="link-button twitter">
+                <a href="https://twitter.com/absurd_humor_51" target="_blank" rel="noopener noreferrer" class="link-button twitter">
                     <i class="fab fa-x-twitter"></i> Twitter (X)
                 </a>
             </section>
 
             <section class="support-section">
-                <h2 data-lang-key="support_heading">Dukung Saya</h2>
-                <p data-lang-key="support_para">Suka dengan konten saya? Dukung saya melalui:</p>
-                <a href="https://sociabuzz.com/ah51" target="_blank" class="link-button support-button">
+                <h2 data-lang-key="support_heading"></h2>
+                <p data-lang-key="support_para"></p>
+                <a href="https://sociabuzz.com/ah51" target="_blank" rel="noopener noreferrer" class="link-button support-button">
                     <i class="fas fa-hand-holding-heart"></i> Sociabuzz
                 </a>
             </section>
-
         </div>
     </main>
 
     <footer class="app-footer">
-        <p>Jumlah pelawat: <img src="https://hits.sh/ah51.github.io/project-x2391.svg?style=flat-square&label=Visitors&color=blue" alt="Visitor counter"></p>
-        <p data-lang-key="copyright">© <span id="year"></span> A.H 5.1 | All rights reserved</p>
+        <p><img src="https://hits.sh/ah51.github.io/project-x2391.svg?style=flat-square&label=Visitors&color=blue" alt="Visitor counter"></p>
+        <p data-lang-key="copyright"></p>
     </footer>
 
     <script>
@@ -236,136 +181,73 @@
             const themeIcon = document.getElementById('theme-icon');
             const themeText = document.getElementById('theme-text');
             const body = document.body;
-            const currentYearSpan = document.getElementById('year');
-            const langButtons = document.querySelectorAll('.language-selector .lang-btn');
+            const langButtons = document.querySelectorAll('.lang-btn');
             const translatableElements = document.querySelectorAll('[data-lang-key]');
             const htmlTag = document.documentElement;
-
             const translations = {
-    id: {
-        tagline: "Halo teman-teman! Selamat datang di markas digital aku. Di sini kamu bisa nemuin semua link medsos tempat aku nongkrong dan bikin konten. Jangan lupa dukung biar aku makin semangat terus berkarya, ya!",
-        support_heading: "Dukung Saya",
-        support_para: "Suka dengan konten saya? Dukung saya melalui:",
-        theme_toggle_light: "Mode Terang",
-        theme_toggle_dark: "Mode Gelap",
-        copyright: `© ${new Date().getFullYear()} A.H 5.1 | Hak cipta dilindungi`
-    },
-    en: {
-        tagline: "Hey guys! Welcome to my digital crib. This is where you’ll find all my social media links – where I hang out and drop my content. Don’t forget to show some love so I can keep creating cool stuff!",
-        support_heading: "Support Me",
-        support_para: "Like my content? Support me via:",
-        theme_toggle_light: "Light Mode",
-        theme_toggle_dark: "Dark Mode",
-        copyright: `© ${new Date().getFullYear()} A.H 5.1 | All rights reserved`
-    },
-    ms: {
-        tagline: "Hey geng! Selamat datang ke markas digital aku. Kat sini korang boleh jumpa semua link sosmed aku – tempat aku lepak dan buat content. Jangan lupa support aku supaya aku boleh terus buat benda gempak!",
-        support_heading: "Sokong Saya",
-        support_para: "Suka dengan kandungan saya? Sokong saya melalui:",
-        theme_toggle_light: "Mod Cerah",
-        theme_toggle_dark: "Mod Gelap",
-        copyright: `© ${new Date().getFullYear()} A.H 5.1 | Hak cipta terpelihara`
-    }
-};
-
-            let currentTheme = 'dark'; // Default, will be updated
-            let currentLang = 'id';   // Default, will be updated
-
-
-            const setLanguage = (lang) => {
-                if (!translations[lang]) {
-                    console.warn(`Language "${lang}" not found in translations.`);
-                    return; // Exit if language doesn't exist
+                id: {
+                    tagline: "Halo teman-teman! Selamat datang di markas digital aku. Di sini kamu bisa nemuin semua link medsos tempat aku nongkrong dan bikin konten. Jangan lupa dukung biar aku makin semangat terus berkarya, ya!",
+                    support_heading: "Dukung Saya",
+                    support_para: "Suka dengan konten saya? Dukung saya melalui:",
+                    theme_toggle_light: "Mode Terang",
+                    theme_toggle_dark: "Mode Gelap",
+                    copyright: "© {year} A.H 5.1 | Hak cipta dilindungi"
+                },
+                en: {
+                    tagline: "Hey guys! Welcome to my digital crib. This is where you’ll find all my social media links – where I hang out and drop my content. Don’t forget to show some love so I can keep creating cool stuff!",
+                    support_heading: "Support Me",
+                    support_para: "Like my content? Support me via:",
+                    theme_toggle_light: "Light Mode",
+                    theme_toggle_dark: "Dark Mode",
+                    copyright: "© {year} A.H 5.1 | All rights reserved"
+                },
+                ms: {
+                    tagline: "Hey geng! Selamat datang ke markas digital aku. Kat sini korang boleh jumpa semua link sosmed aku – tempat aku lepak dan buat content. Jangan lupa support aku supaya aku boleh terus buat benda gempak!",
+                    support_heading: "Sokong Saya",
+                    support_para: "Suka dengan kandungan saya? Sokong saya melalui:",
+                    theme_toggle_light: "Mod Cerah",
+                    theme_toggle_dark: "Mod Gelap",
+                    copyright: "© {year} A.H 5.1 | Hak cipta terpelihara"
                 }
-                currentLang = lang; // Update global state
-
+            };
+            let currentTheme = 'dark'; let currentLang = 'id';
+            const updateThemeButtonText = () => {
+                const themeKey = currentTheme === 'dark' ? 'theme_toggle_light' : 'theme_toggle_dark';
+                themeIcon.className = currentTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                themeText.textContent = translations[currentLang]?.[themeKey] || (currentTheme === 'dark' ? 'Light Mode' : 'Dark Mode');
+            };
+            const applyTheme = (theme) => {
+                currentTheme = theme;
+                body.classList.toggle('dark-mode', theme === 'dark');
+                body.classList.toggle('light-mode', theme !== 'dark');
+                localStorage.setItem('theme', theme);
+                updateThemeButtonText();
+            };
+            const setLanguage = (lang) => {
+                if (!translations[lang]) return;
+                currentLang = lang;
                 translatableElements.forEach(element => {
                     const key = element.getAttribute('data-lang-key');
-                    let text;
-
-                    if (key === 'theme_toggle') {
-                        const themeKey = currentTheme === 'dark' ? 'theme_toggle_light' : 'theme_toggle_dark';
-                        text = translations[lang][themeKey];
-                    } else {
-                        text = translations[lang][key];
-                    }
-
-                    if (text !== undefined) {
-                        if (key === 'copyright' && element.querySelector('#year')) {
-                           element.innerHTML = text; // Use innerHTML to keep the span
-                        } else {
-                           element.textContent = text;
-                        }
-                    } else {
-                        console.warn(`Key "${key}" not found for language "${lang}"`);
-                    }
+                    if (key === 'theme_toggle') return; 
+                    let text = translations[lang][key] || '';
+                    if (key === 'copyright') text = text.replace('{year}', new Date().getFullYear());
+                    element.textContent = text;
                 });
-
-                langButtons.forEach(btn => {
-                    if (btn.getAttribute('data-lang') === lang) {
-                        btn.classList.add('active');
-                    } else {
-                        btn.classList.remove('active');
-                    }
-                });
-
+                langButtons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-lang') === lang));
                 htmlTag.setAttribute('lang', lang);
-
                 localStorage.setItem('language', lang);
-                console.log(`Language set to: ${lang}`);
+                updateThemeButtonText();
             };
-
-
-            const applyTheme = (theme) => {
-                currentTheme = theme; // Update global state
-
-                if (theme === 'dark') {
-                    body.classList.add('dark-mode');
-                    body.classList.remove('light-mode');
-                    themeIcon.className = 'fas fa-sun'; // Sun icon for dark mode
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    body.classList.add('light-mode');
-                    body.classList.remove('dark-mode');
-                    themeIcon.className = 'fas fa-moon'; // Moon icon for light mode
-                    localStorage.setItem('theme', 'light');
-                }
-                setLanguage(currentLang);
+            const init = () => {
+                const savedTheme = localStorage.getItem('theme') || (window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                applyTheme(savedTheme);
+                const savedLang = localStorage.getItem('language') || (translations[navigator.language.split('-')[0]] ? navigator.language.split('-')[0] : 'id');
+                setLanguage(savedLang);
             };
-
-
-
-            const savedTheme = localStorage.getItem('theme');
-            const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const initialTheme = savedTheme ? savedTheme : (userPrefersDark ? 'dark' : 'light');
-            applyTheme(initialTheme); // Apply theme first
-
-            const savedLang = localStorage.getItem('language');
-            const browserLang = navigator.language.split('-')[0]; // e.g., 'en-US' -> 'en'
-            const initialLang = savedLang ? savedLang : (translations[browserLang] ? browserLang : 'id');
-            setLanguage(initialLang); // Apply language after theme is set
-
-            const currentYear = new Date().getFullYear();
-
-
-            themeToggleButton.addEventListener('click', () => {
-                const newTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
-                applyTheme(newTheme);
-            });
-
-            langButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const selectedLang = button.getAttribute('data-lang');
-                    if (selectedLang !== currentLang) { // Only change if different
-                       setLanguage(selectedLang);
-                    }
-                    
-                });
-            });
-
+            themeToggleButton.addEventListener('click', () => applyTheme(currentTheme === 'dark' ? 'light' : 'dark'));
+            langButtons.forEach(button => button.addEventListener('click', () => { const lang = button.getAttribute('data-lang'); if (lang !== currentLang) setLanguage(lang); }));
+            init();
         });
     </script>
-
 </body>
 </html>
