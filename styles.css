@@ -1,179 +1,201 @@
-/* Variabel Tema */
 :root {
-    --background-light: linear-gradient(135deg, #f8f9fa, #e9ecef);
-    --background-dark: linear-gradient(135deg, #0a0a0a, #1a1a1a);
-    --text-light: #2d3436;
-    --text-dark: #f8f9fa;
-    --primary-color: #4a90e2;
-    --secondary-color: #6c757d;
-    --card-light: rgba(255, 255, 255, 0.95);
-    --card-dark: rgba(30, 30, 30, 0.95);
-    --shadow-light: 0 8px 32px rgba(0, 0, 0, 0.1);
-    --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+    
+    /* Animation Easing */
+   
 }
 
-/* Tema Default */
+[data-theme="light"] {
+    --bg-base: #f8fafc;
+    --bg-grad-1: #60a5fa; 
+    --bg-grad-2: #c084fc;
+    --card-bg: rgba(255, 255, 255, 0.6);
+    --card-border: rgba(255, 255, 255, 0.8);
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --item-bg: rgba(255, 255, 255, 0.5);
+    --item-hover: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="dark"] {
+    --bg-base: #020617;
+    --bg-grad-1: #1e3a8a;
+    --bg-grad-2: #581c87;
+    --card-bg: rgba(15, 23, 42, 0.6);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --item-bg: rgba(30, 41, 59, 0.4);
+    --item-hover: rgba(51, 65, 85, 0.6);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    background: var(--background-light);
-    color: var(--text-light);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-attachment: fixed;
-    transition: all 0.3s ease-in-out;
+    font-family: var(--font-main);
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex; flex-direction: column;
 }
 
-/* Tema Gelap */
-body.dark {
-    background: var(--background-dark);
-    color: var(--text-dark);
+/* BACKGROUND */
+.bg-wrapper { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.aurora-orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.5; animation: float 15s infinite alternate ease-in-out; }
+.orb-1 { width: 60vw; height: 60vw; top: -10%; left: -10%; background: var(--bg-grad-1); }
+.orb-2 { width: 50vw; height: 50vw; bottom: -10%; right: -10%; background: var(--bg-grad-2); animation-delay: -5s; }
+.noise-texture { position: absolute; inset: 0; opacity: 0.05; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+@keyframes float { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(5%, 10%) scale(1.1); } }
+
+/* NAVIGATION */
+.glass-nav {
+    position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%);
+    background: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    padding: 0.6rem 1.2rem; border-radius: 99px;
+    border: 1px solid var(--card-border);
+    display: flex; align-items: center; gap: 1.2rem;
+    z-index: 50; box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+}
+.nav-group { display: flex; align-items: center; gap: 0.5rem; }
+.nav-btn { background: none; border: none; font-family: inherit; font-weight: 700; color: var(--text-secondary); cursor: pointer; font-size: 0.85rem; padding: 2px 4px; transition: color 0.3s; }
+.nav-btn.active { color: var(--text-primary); }
+.nav-divider { width: 1px; height: 14px; background: var(--text-secondary); opacity: 0.3; }
+.nav-icon-btn { background: none; border: none; color: var(--text-primary); cursor: pointer; font-size: 1rem; padding-left: 0.5rem; border-left: 1px solid rgba(150,150,150,0.2); }
+
+/* MAIN LAYOUT */
+.main-container {
+    flex: 1;
+    display: flex; justify-content: center; align-items: center;
+    padding: 6rem 1rem 2rem;
 }
 
-/* Container */
-.container {
-    background: var(--card-light);
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
-    box-shadow: var(--shadow-light);
-    padding: 2.5rem;
-    text-align: center;
-    max-width: 500px;
-    width: 90%;
-    animation: fadeIn 1s ease-in-out;
-    transition: all 0.3s ease-in-out;
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--card-border);
+    border-radius: 32px;
+    padding: 2rem;
+    width: 100%; max-width: 440px; /* Mobile width */
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+    transform-style: preserve-3d;
+    transition: max-width 0.5s var(--ease-spring);
+    display: flex; flex-direction: column; gap: 2rem;
 }
 
-body.dark .container {
-    background: var(--card-dark);
-    box-shadow: var(--shadow-dark);
-}
-
-/* Profile Section */
-.profile {
-    margin-bottom: 2rem;
-}
-
-.profile-pic {
-    width: 140px;
-    height: 140px;
-    border: 4px solid var(--primary-color);
-    padding: 3px;
-    border-radius: 50%;
-    transition: transform 0.3s ease;
-}
-
-.profile-pic:hover {
-    transform: rotate(5deg) scale(1.05);
-}
-
-.profile h1 {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin: 1.5rem 0;
-}
-
-.description {
-    font-size: 1rem;
-    color: var(--text-light);
-    line-height: 1.6;
-}
-
-body.dark .description {
-    color: var(--text-dark);
-}
-
-/* Social Media Buttons */
-.social-links {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-/* Tombol Media Sosial */
-.social-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1rem;
-    padding: 12px 20px;
-    border-radius: 25px;
-    color: #fff;
-    position: relative;
-    transition: all 0.3s ease-in-out;
-}
-
-/* Efek Hover Modern */
-.social-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 5px 20px rgba(255, 255, 255, 0.2);
-}
-
-/* Warna & Efek Hover untuk Setiap Tombol */
-.social-btn.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-.social-btn.youtube { background: #FF0000; }
-.social-btn.tiktok { background: linear-gradient(45deg, #69C9D0, #EE1D52, #010101); }
-
-/* X (Twitter) */
-.social-btn.twitter {
-    background: #000000; /* Warna hitam solid */
-}
-.social-btn.twitter:hover {
-    box-shadow: 0px 5px 20px rgba(255, 255, 255, 0.3);
-}
-
-.social-btn.facebook { background: #1877F2; }
-.social-btn.facebook:hover { box-shadow: 0px 5px 20px rgba(24, 119, 242, 0.5); }
-
-/* Tombol Tema */
-.theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 10px 15px;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 25px;
-    background: var(--card-light);
-    color: var(--text-light);
-    cursor: pointer;
-    box-shadow: var(--shadow-light);
-    transition: all 0.3s ease-in-out;
-}
-
-body.dark .theme-toggle {
-    background: var(--card-dark);
-    color: var(--text-dark);
-    box-shadow: var(--shadow-dark);
-}
-
-/* Responsif */
-@media (max-width: 500px) {
-    .social-btn {
-        font-size: 0.9rem;
-        padding: 10px 15px;
+/* === RESPONSIVE LAYOUT UPGRADE (Tablet/Desktop) === */
+@media (min-width: 800px) {
+    .glass-card {
+        max-width: 900px;
+        flex-direction: row; /* Horizontal Layout */
+        align-items: center; /* Center Vertikal secara keseluruhan */
+        padding: 3rem;
+        gap: 3.5rem;
     }
-    .social-btn i {
-        font-size: 1rem;
+
+    /* === KOLOM PROFIL (KIRI) === */
+    .col-profile {
+        flex: 0 0 320px; /* Lebar tetap supaya stabil */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* KUNCI: Memaksa Foto & Teks ke Tengah Sumbu */
+        text-align: center;  /* Teks rata tengah */
+        position: relative;
+    }
+
+    /* Garis pemisah vertikal yang lebih halus */
+    .col-profile::after {
+        content: ''; 
+        position: absolute; 
+        right: -1.75rem; 
+        top: 15%; 
+        height: 70%; 
+        width: 1px;
+        background: linear-gradient(to bottom, transparent, var(--card-border), transparent);
+    }
+    
+    /* Pastikan Wrapper Foto benar-benar di tengah */
+    .profile-image-wrapper { 
+        margin: 0 auto 1.5rem auto !important; 
+        width: 130px; /* Sedikit lebih besar di PC biar gagah */
+        height: 130px;
+    }
+    
+    .profile-name {
+        font-size: 2rem; /* Nama diperbesar */
+    }
+
+    /* === KOLOM LINK (KANAN) === */
+    .col-links { 
+        flex: 1; 
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
+        width: 100%;
+    }
+    
+    .desktop-only { display: block !important; margin-top: 2rem; opacity: 0.6; }
+    .mobile-only { display: none !important; }
+
+    /* Grid layout untuk tombol supaya rapi 2 kolom */
+    .links-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Memaksa 2 kolom seimbang */
+        gap: 1rem;
     }
 }
+/* PROFILE STYLE */
+.profile-header { text-align: center; }
+.profile-image-wrapper { width: 100px; height: 100px; position: relative; margin: 0 auto 1rem; }
+.profile-img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 3px solid var(--bg-base); }
+.status-indicator { width: 16px; height: 16px; background: #22c55e; border: 2px solid var(--card-bg); position: absolute; bottom: 5px; right: 5px; border-radius: 50%; box-shadow: 0 0 10px #22c55e; }
 
-/* Animasi Masuk (Fade-in) */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.profile-name { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
+.profile-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 6px 14px; background: var(--item-bg); border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--card-border); margin-bottom: 1rem; }
+.greeting-text { font-size: 1rem; color: var(--text-secondary); min-height: 1.5em; font-weight: 500; }
+
+/* LINKS & SUPPORT */
+.links-grid { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; }
+.link-item {
+    display: flex; align-items: center; padding: 1rem 1.2rem;
+    background: var(--item-bg); border: 1px solid var(--card-border);
+    border-radius: 16px; text-decoration: none; color: var(--text-primary);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
+.link-item:hover { transform: translateY(-3px) scale(1.02); background: var(--item-hover); box-shadow: 0 8px 20px -5px rgba(0,0,0,0.1); }
+.link-icon { font-size: 1.4rem; margin-right: 1rem; width: 24px; text-align: center; }
+.link-arrow { margin-left: auto; opacity: 0; transform: translateX(-5px); transition: 0.3s; }
+.link-item:hover .link-arrow { opacity: 1; transform: translateX(0); }
+
+/* Brand Colors on Hover */
+.instagram:hover { border-color: #d62976; color: #d62976; }
+.youtube:hover { border-color: #ff0000; color: #ff0000; }
+.tiktok:hover { border-color: #00f2ea; color: #000; }
+[data-theme="dark"] .tiktok:hover { color: #fff; }
+.twitter:hover { border-color: #1da1f2; color: #1da1f2; }
+
+/* Support Section */
+.support-area { 
+    background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(147,51,234,0.1));
+    border: 1px solid var(--card-border); border-radius: 20px; padding: 1.5rem;
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+}
+.support-text h3 { font-size: 0.95rem; margin-bottom: 2px; }
+.support-text p { font-size: 0.8rem; color: var(--text-secondary); }
+.support-btn { 
+    background: var(--text-primary); color: var(--bg-base); padding: 10px 18px; 
+    border-radius: 12px; font-weight: 600; text-decoration: none; font-size: 0.85rem;
+    display: inline-flex; align-items: center; gap: 6px; transition: transform 0.2s;
+}
+.support-btn:hover { transform: scale(1.05); }
+
+/* Utilities */
+.desktop-only { display: none; }
+.footer-info { text-align: center; margin-top: 1rem; opacity: 0.7; }
+.counter-badge { height: 20px; border-radius: 4px; display: block; margin: 0 auto 0.5rem; }
+
+/* Preloader */
+#preloader { position: fixed; inset: 0; background: var(--bg-base); z-index: 999; display: flex; align-items: center; justify-content: center; transition: opacity 0.5s; }
+.loader-line { height: 2px; width: 0; background: linear-gradient(90deg, #60a5fa, #c084fc); animation: load 1s forwards ease-in-out; margin-top: 10px; }
+@keyframes load { to { width: 100px; } }
