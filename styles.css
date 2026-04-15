@@ -1,201 +1,410 @@
-:root {
-    --font-main: 'Plus Jakarta Sans', sans-serif;
-    
-    /* Animation Easing */
-   
-}
+/* ===================================================
+   A.H 5.1 | Theme v3: Glassmorphism Bento Grid
+=================================================== */
 
-[data-theme="light"] {
-    --bg-base: #f8fafc;
-    --bg-grad-1: #60a5fa; 
-    --bg-grad-2: #c084fc;
-    --card-bg: rgba(255, 255, 255, 0.6);
-    --card-border: rgba(255, 255, 255, 0.8);
-    --text-primary: #0f172a;
-    --text-secondary: #64748b;
-    --item-bg: rgba(255, 255, 255, 0.5);
-    --item-hover: rgba(255, 255, 255, 0.9);
+:root {
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --ease-bouncy: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-theme="dark"] {
-    --bg-base: #020617;
-    --bg-grad-1: #1e3a8a;
-    --bg-grad-2: #581c87;
-    --card-bg: rgba(15, 23, 42, 0.6);
-    --card-border: rgba(255, 255, 255, 0.08);
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --item-bg: rgba(30, 41, 59, 0.4);
-    --item-hover: rgba(51, 65, 85, 0.6);
+    --bg-main: #050505;
+    --bg-card: rgba(20, 20, 25, 0.6);
+    --bg-hover: rgba(40, 40, 50, 0.8);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-glow: rgba(79, 142, 247, 0.4);
+    --text-primary: #ffffff;
+    --text-sec: #9ca3af;
+    --accent: #3b82f6;
+    --glow-blob: rgba(59, 130, 246, 0.15);
+}
+
+[data-theme="light"] {
+    --bg-main: #f3f4f6;
+    --bg-card: rgba(255, 255, 255, 0.7);
+    --bg-hover: rgba(255, 255, 255, 1);
+    --border: rgba(0, 0, 0, 0.06);
+    --border-glow: rgba(37, 99, 235, 0.3);
+    --text-primary: #111827;
+    --text-sec: #6b7280;
+    --accent: #2563eb;
+    --glow-blob: rgba(37, 99, 235, 0.1);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
-    font-family: var(--font-main);
-    background-color: var(--bg-base);
+    font-family: var(--font-body);
+    background-color: var(--bg-main);
     color: var(--text-primary);
     min-height: 100vh;
     overflow-x: hidden;
-    display: flex; flex-direction: column;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* BACKGROUND */
-.bg-wrapper { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
-.aurora-orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.5; animation: float 15s infinite alternate ease-in-out; }
-.orb-1 { width: 60vw; height: 60vw; top: -10%; left: -10%; background: var(--bg-grad-1); }
-.orb-2 { width: 50vw; height: 50vw; bottom: -10%; right: -10%; background: var(--bg-grad-2); animation-delay: -5s; }
-.noise-texture { position: absolute; inset: 0; opacity: 0.05; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-
-@keyframes float { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(5%, 10%) scale(1.1); } }
-
-/* NAVIGATION */
-.glass-nav {
-    position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%);
-    background: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    padding: 0.6rem 1.2rem; border-radius: 99px;
-    border: 1px solid var(--card-border);
-    display: flex; align-items: center; gap: 1.2rem;
-    z-index: 50; box-shadow: 0 4px 30px rgba(0,0,0,0.1);
-}
-.nav-group { display: flex; align-items: center; gap: 0.5rem; }
-.nav-btn { background: none; border: none; font-family: inherit; font-weight: 700; color: var(--text-secondary); cursor: pointer; font-size: 0.85rem; padding: 2px 4px; transition: color 0.3s; }
-.nav-btn.active { color: var(--text-primary); }
-.nav-divider { width: 1px; height: 14px; background: var(--text-secondary); opacity: 0.3; }
-.nav-icon-btn { background: none; border: none; color: var(--text-primary); cursor: pointer; font-size: 1rem; padding-left: 0.5rem; border-left: 1px solid rgba(150,150,150,0.2); }
-
-/* MAIN LAYOUT */
-.main-container {
-    flex: 1;
-    display: flex; justify-content: center; align-items: center;
-    padding: 6rem 1rem 2rem;
+/* Background Effects */
+.bg-glow {
+    position: fixed;
+    top: -20%; left: -10%;
+    width: 60vw; height: 60vw;
+    background: radial-gradient(circle, var(--glow-blob) 0%, transparent 60%);
+    z-index: -2;
+    filter: blur(80px);
+    pointer-events: none;
 }
 
-.glass-card {
-    background: var(--card-bg);
-    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-    border: 1px solid var(--card-border);
-    border-radius: 32px;
+.grid-overlay {
+    position: fixed; inset: 0; z-index: -1;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, black 20%, transparent 80%);
+    pointer-events: none;
+}
+
+/* Navigation */
+.top-nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 5%;
+    background: rgba(var(--bg-main), 0.5);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-brand { font-family: var(--font-display); font-weight: 800; display: flex; align-items: baseline; gap: 5px; }
+.brand-version { color: var(--accent); font-size: 0.8rem; }
+.nav-controls { display: flex; gap: 10px; }
+
+.lang-group, .theme-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex; overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+.lang-btn {
+    background: transparent; color: var(--text-sec);
+    border: none; padding: 8px 12px; font-weight: 600;
+    cursor: pointer; transition: 0.3s;
+}
+.lang-btn.active { background: var(--accent); color: #fff; }
+.theme-btn { width: 40px; height: 40px; justify-content: center; align-items: center; cursor: pointer; color: var(--text-sec); }
+.theme-btn:hover { color: var(--accent); }
+
+/* BENTO GRID LAYOUT */
+.bento-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    max-width: 900px;
+    margin: 100px auto 40px;
+    padding: 0 1.5rem;
+}
+
+.bento-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
     padding: 2rem;
-    width: 100%; max-width: 440px; /* Mobile width */
-    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
-    transform-style: preserve-3d;
-    transition: max-width 0.5s var(--ease-spring);
-    display: flex; flex-direction: column; gap: 2rem;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: transform 0.4s var(--ease-bouncy), border-color 0.4s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
 }
 
-/* === RESPONSIVE LAYOUT UPGRADE (Tablet/Desktop) === */
-@media (min-width: 800px) {
-    .glass-card {
-        max-width: 900px;
-        flex-direction: row; /* Horizontal Layout */
-        align-items: center; /* Center Vertikal secara keseluruhan */
-        padding: 3rem;
-        gap: 3.5rem;
-    }
+.bento-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--border-glow);
+}
 
-    /* === KOLOM PROFIL (KIRI) === */
-    .col-profile {
-        flex: 0 0 320px; /* Lebar tetap supaya stabil */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center; /* KUNCI: Memaksa Foto & Teks ke Tengah Sumbu */
-        text-align: center;  /* Teks rata tengah */
-        position: relative;
-    }
+/* Card 1: Profile */
+.profile-card { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.avatar-wrapper { position: relative; width: 110px; height: 110px; }
+.avatar-img { width: 100%; height: 100%; border-radius: 30%; object-fit: cover; background: #fff; border: 2px solid var(--border); }
+.status-indicator { position: absolute; bottom: -5px; right: -5px; width: 20px; height: 20px; background: #22c55e; border-radius: 50%; border: 3px solid var(--bg-main); display: flex; align-items: center; justify-content: center; }
+.pulse { width: 100%; height: 100%; background: inherit; border-radius: 50%; animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite; }
+@keyframes ping { 75%, 100% { transform: scale(2); opacity: 0; } }
 
-    /* Garis pemisah vertikal yang lebih halus */
-    .col-profile::after {
-        content: ''; 
-        position: absolute; 
-        right: -1.75rem; 
-        top: 15%; 
-        height: 70%; 
-        width: 1px;
-        background: linear-gradient(to bottom, transparent, var(--card-border), transparent);
+.profile-name { font-family: var(--font-display); font-size: 2rem; font-weight: 800; letter-spacing: -1px; }
+.profile-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(59, 130, 246, 0.1); color: var(--accent); padding: 6px 14px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; }
+.greeting-text { color: var(--text-sec); font-size: 0.95rem; }
+
+/* Card 2: Identity */
+.identity-card { display: flex; flex-direction: column; gap: 1.2rem; justify-content: center; }
+.info-item { display: flex; align-items: center; gap: 15px; }
+.info-item i { width: 40px; height: 40px; background: rgba(59, 130, 246, 0.1); color: var(--accent); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+.info-label { display: block; font-size: 0.65rem; color: var(--text-sec); font-weight: 700; letter-spacing: 1px; }
+.info-val { display: block; font-weight: 600; font-size: 0.9rem; }
+
+/* Card 3: Socials */
+.card-title { font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 2px; color: var(--text-sec); margin-bottom: 1rem; }
+.social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+.social-btn {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+    background: var(--bg-main); border: 1px solid var(--border); border-radius: 16px;
+    padding: 1.2rem; color: var(--text-primary); text-decoration: none;
+    transition: all 0.3s var(--ease-bouncy);
+}
+.social-btn i { font-size: 1.8rem; transition: transform 0.3s; }
+.social-btn span { font-size: 0.8rem; font-weight: 600; }
+.social-btn:hover { background: var(--bg-hover); transform: scale(1.05); border-color: var(--border-glow); }
+.social-btn.ig:hover i { color: #e1306c; }
+.social-btn.yt:hover i { color: #ff0000; }
+.social-btn.tt:hover i { color: #00f2fe; }
+.social-btn.tw:hover i { color: #1da1f2; }
+
+/* Card 4: Support */
+.support-card { position: relative; overflow: hidden; display: flex; align-items: center; }
+.support-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--glow-blob), transparent); pointer-events: none; }
+.support-content { position: relative; z-index: 1; width: 100%; }
+.support-content p { color: var(--text-sec); font-size: 0.85rem; margin: 5px 0 15px; }
+.cta-button { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; padding: 10px 20px; border-radius: 12px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+.cta-button:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 10px 20px var(--glow-blob); }
+
+/* Footer */
+.bottom-footer { text-align: center; padding: 2rem; color: var(--text-sec); font-size: 0.85rem; }
+.hit-badge { margin-bottom: 10px; }
+
+/* Responsive Desktop Layout (The Bento Magic) */
+@media (min-width: 768px) {
+    .bento-container {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: minmax(180px, auto);
     }
+    .profile-card { grid-column: span 2; grid-row: span 2; justify-content: center; }
+    .identity-card { grid-column: span 1; grid-row: span 2; }
+    .socials-card { grid-column: span 2; }
+    .support-card { grid-column: span 1; display: flex; text-align: center; justify-content: center; }
+    .support-content { display: flex; flex-direction: column; align-items: center; }
+    .avatar-wrapper { width: 140px; height: 140px; }
+    .profile-name { font-size: 2.8rem; }
+}
+
+/* Preloader & Animations (Retained & Optimized) */
+/* ===== ADVANCED TECH PRELOADER ===== */
+#preloader {
+    position: fixed; inset: 0; z-index: 9999;
+    background: #050505;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    overflow: hidden;
+}
+
+.pre-container {
+    width: 100%; max-width: 400px;
+    padding: 2rem;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 2rem;
+}
+
+/* Terminal Status */
+.boot-status {
+    width: 100%;
+    font-family: monospace;
+    font-size: 0.65rem;
+    color: var(--accent);
+    display: flex; flex-direction: column; gap: 4px;
+    opacity: 0.6;
+}
+.status-line {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid var(--accent);
+    width: 0;
+    animation: typing 1s steps(30, end) forwards, blink 0.5s step-end infinite;
+}
+.status-line:nth-child(2) { animation-delay: 0.4s; }
+.status-line:nth-child(3) { animation-delay: 0.8s; }
+
+@keyframes typing { from { width: 0 } to { width: 100% } }
+@keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--accent) } }
+
+/* Glitch Logo */
+.pre-logo-box { position: relative; width: 100px; height: 100px; }
+.pre-svg-main {
+    width: 100%; height: 100%;
+    color: #fff;
+    filter: drop-shadow(0 0 10px var(--accent-glow));
+}
+.path-a { stroke-dasharray: 300; stroke-dashoffset: 300; animation: draw 1.5s ease forwards; }
+.path-h { stroke-dasharray: 200; stroke-dashoffset: 200; stroke: var(--accent); animation: draw 1.5s 0.3s ease forwards; }
+
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+/* Branding Text */
+.pre-brand { text-align: center; }
+.pre-title {
+    font-size: 1.2rem; font-weight: 800;
+    letter-spacing: 4px; color: #fff;
+    margin-bottom: 5px;
+}
+.pre-sub {
+    font-size: 0.6rem; color: var(--text-sec);
+    letter-spacing: 2px; text-transform: uppercase;
+}
+
+/* Tech Progress Bar */
+.pre-progress-wrapper { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.pre-progress-bar {
+    width: 100%; height: 2px;
+    background: rgba(255,255,255,0.05);
+    position: relative; overflow: hidden;
+}
+.pre-progress-bar::after {
+    content: ''; position: absolute; left: 0; top: 0; height: 100%;
+    width: 0; background: var(--accent);
+    box-shadow: 0 0 15px var(--accent);
+    animation: fillProgress 2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+.pre-percentage {
+    font-family: monospace; font-size: 0.7rem; color: var(--accent);
+}
+
+@keyframes fillProgress { to { width: 100%; } }
+
+/* Exit Animation */
+.preloader-hidden {
+    opacity: 0; visibility: hidden;
+    transform: scale(1.1);
+    transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}.pre-inner { text-align: center; }
+/* ===== PRELOADER LOGO ===== */
+.pre-logo-svg {
+    width: 110px; height: 110px; /* Ukuran container */
+    opacity: 0;
+    transform: scale(0.85);
+    animation: pre-logo-in 0.7s 0.2s var(--ease-out) forwards;
+}
+
+/* Animasi untuk memunculkan container logo */
+@keyframes pre-logo-in { to { opacity: 1; transform: scale(1); } }
+
+/* ===== PRELOADER TEXT LOGO (CHROMATIC GLITCH) ===== */
+.pre-logo-box {
+    position: relative;
+    /* Lebar disesuaikan agar teks "A.H 5.1" pas */
+    width: 200px; 
+    height: 80px; 
+    display: flex; justify-content: center; align-items: center;
+    margin: 10px 0; /* Memberi jarak dengan elemen terminal */
+}
+
+.pre-text-logo {
+    position: relative;
+    font-family: monospace; /* Menggunakan monospace agar senada dengan boot sequence */
+    font-size: 3rem; /* Ukuran teks logo */
+    font-weight: 800;
+    letter-spacing: -2px; /* Membuat teks sedikit lebih padat */
+    color: #fff;
+    text-transform: uppercase;
     
-    /* Pastikan Wrapper Foto benar-benar di tengah */
-    .profile-image-wrapper { 
-        margin: 0 auto 1.5rem auto !important; 
-        width: 130px; /* Sedikit lebih besar di PC biar gagah */
-        height: 130px;
-    }
-    
-    .profile-name {
-        font-size: 2rem; /* Nama diperbesar */
-    }
-
-    /* === KOLOM LINK (KANAN) === */
-    .col-links { 
-        flex: 1; 
-        display: flex; 
-        flex-direction: column; 
-        justify-content: center; 
-        width: 100%;
-    }
-    
-    .desktop-only { display: block !important; margin-top: 2rem; opacity: 0.6; }
-    .mobile-only { display: none !important; }
-
-    /* Grid layout untuk tombol supaya rapi 2 kolom */
-    .links-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* Memaksa 2 kolom seimbang */
-        gap: 1rem;
-    }
+    /* === Efek Dasar: Bayangan Warna RGB (Chromatic Aberration) === */
+    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), /* Merah */
+                 -0.025em -0.05em 0 rgba(0, 255, 0, 0.75), /* Hijau */
+                 0.025em 0.05em 0 rgba(0, 0, 255, 0.75), /* Biru */
+                 0 0 20px rgba(59, 130, 246, 0.7); /* Cahaya Utama Biru Accent */
+                 
+    /* Menerapkan Animasi Glitch Utama dan Berkedip */
+    animation: glitch-main 1s infinite, flicker 4s infinite;
 }
-/* PROFILE STYLE */
-.profile-header { text-align: center; }
-.profile-image-wrapper { width: 100px; height: 100px; position: relative; margin: 0 auto 1rem; }
-.profile-img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 3px solid var(--bg-base); }
-.status-indicator { width: 16px; height: 16px; background: #22c55e; border: 2px solid var(--card-bg); position: absolute; bottom: 5px; right: 5px; border-radius: 50%; box-shadow: 0 0 10px #22c55e; }
 
-.profile-name { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
-.profile-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 6px 14px; background: var(--item-bg); border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--card-border); margin-bottom: 1rem; }
-.greeting-text { font-size: 1rem; color: var(--text-secondary); min-height: 1.5em; font-weight: 500; }
-
-/* LINKS & SUPPORT */
-.links-grid { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; }
-.link-item {
-    display: flex; align-items: center; padding: 1rem 1.2rem;
-    background: var(--item-bg); border: 1px solid var(--card-border);
-    border-radius: 16px; text-decoration: none; color: var(--text-primary);
-    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+/* Duplikasi Teks via CSS untuk efek Chromatic Aberration Layers */
+.pre-text-logo::before,
+.pre-text-logo::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    color: transparent; /* Membuat teks duplikat transparan */
+    text-shadow: inherit; /* Mewarisi bayangan warna RGB dari parent */
+    opacity: 0.8;
 }
-.link-item:hover { transform: translateY(-3px) scale(1.02); background: var(--item-hover); box-shadow: 0 8px 20px -5px rgba(0,0,0,0.1); }
-.link-icon { font-size: 1.4rem; margin-right: 1rem; width: 24px; text-align: center; }
-.link-arrow { margin-left: auto; opacity: 0; transform: translateX(-5px); transition: 0.3s; }
-.link-item:hover .link-arrow { opacity: 1; transform: translateX(0); }
 
-/* Brand Colors on Hover */
-.instagram:hover { border-color: #d62976; color: #d62976; }
-.youtube:hover { border-color: #ff0000; color: #ff0000; }
-.tiktok:hover { border-color: #00f2ea; color: #000; }
-[data-theme="dark"] .tiktok:hover { color: #fff; }
-.twitter:hover { border-color: #1da1f2; color: #1da1f2; }
-
-/* Support Section */
-.support-area { 
-    background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(147,51,234,0.1));
-    border: 1px solid var(--card-border); border-radius: 20px; padding: 1.5rem;
-    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+/* Layer 1: Glitch di bagian atas teks */
+.pre-text-logo::before {
+    left: -0.05em;
+    /* clip-path memotong bagian atas teks */
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    animation: glitch-layer-1 0.7s infinite alternate-reverse;
 }
-.support-text h3 { font-size: 0.95rem; margin-bottom: 2px; }
-.support-text p { font-size: 0.8rem; color: var(--text-secondary); }
-.support-btn { 
-    background: var(--text-primary); color: var(--bg-base); padding: 10px 18px; 
-    border-radius: 12px; font-weight: 600; text-decoration: none; font-size: 0.85rem;
-    display: inline-flex; align-items: center; gap: 6px; transition: transform 0.2s;
+
+/* Layer 2: Glitch di bagian bawah teks */
+.pre-text-logo::after {
+    left: 0.05em;
+    /* clip-path memotong bagian bawah teks */
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+    animation: glitch-layer-2 0.7s infinite alternate;
 }
-.support-btn:hover { transform: scale(1.05); }
 
-/* Utilities */
-.desktop-only { display: none; }
-.footer-info { text-align: center; margin-top: 1rem; opacity: 0.7; }
-.counter-badge { height: 20px; border-radius: 4px; display: block; margin: 0 auto 0.5rem; }
+/* --- ANIMASI KEYFRAMES --- */
 
-/* Preloader */
-#preloader { position: fixed; inset: 0; background: var(--bg-base); z-index: 999; display: flex; align-items: center; justify-content: center; transition: opacity 0.5s; }
-.loader-line { height: 2px; width: 0; background: linear-gradient(90deg, #60a5fa, #c084fc); animation: load 1s forwards ease-in-out; margin-top: 10px; }
-@keyframes load { to { width: 100px; } }
+/* Animasi Glitch Utama: Goyang sedikit */
+@keyframes glitch-main {
+    0% { transform: skew(0deg); }
+    1% { transform: skew(1deg); }
+    2% { transform: skew(-1deg); }
+    3% { transform: skew(0deg); }
+    100% { transform: skew(0deg); }
+}
+
+/* Animasi Glitch Layer 1 (Atas): Pergeseran acak dan clip-path */
+@keyframes glitch-layer-1 {
+    0% { clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); transform: translate(-2px, -1px); }
+    15% { clip-path: polygon(0 15%, 100% 15%, 100% 70%, 0 70%); transform: translate(1px, 2px); }
+    30% { clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%); transform: translate(-1px, -2px); }
+    45% { clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%); transform: translate(2px, 1px); }
+    60% { clip-path: polygon(0 75%, 100% 75%, 100% 90%, 0 90%); transform: translate(-2px, 2px); }
+    75% { clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); transform: translate(0); }
+    100% { clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); transform: translate(0); }
+}
+
+/* Animasi Glitch Layer 2 (Bawah): Pergeseran acak yang berbeda */
+@keyframes glitch-layer-2 {
+    0% { clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%); transform: translate(2px, 1px); }
+    15% { clip-path: polygon(0 30%, 100% 30%, 100% 90%, 0 90%); transform: translate(-1px, -2px); }
+    30% { clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%); transform: translate(1px, 2px); }
+    45% { clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%); transform: translate(-2px, -1px); }
+    60% { clip-path: polygon(0 10%, 100% 10%, 100% 35%, 0 35%); transform: translate(2px, -2px); }
+    75% { clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%); transform: translate(0); }
+    100% { clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%); transform: translate(0); }
+}
+
+/* Animasi Flicker (Berkedip Acak): Memberikan efek layar rusak */
+@keyframes flicker {
+    0%, 19.999%, 22%, 62.999%, 64%, 100% { opacity: 1; }
+    20%, 21.999% { opacity: 0.5; }
+    63%, 63.999% { opacity: 0.8; }
+}
+
+.pre-logo-img {
+    width: 100%; 
+    height: 100%;
+    object-fit: contain;
+    /* Tambahan efek cahaya biru (opsional) biar makin keren */
+    filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
+}
+.logo-path-a { stroke-dasharray: 300; stroke-dashoffset: 300; color: var(--text-primary); animation: pre-draw 1s 0.2s forwards; }
+.logo-path-h { stroke-dasharray: 200; stroke-dashoffset: 200; stroke: var(--accent); animation: pre-draw 1s 0.5s forwards; }
+@keyframes pre-draw { to { stroke-dashoffset: 0; } }
+.pre-name-row { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; margin-top: 15px; display: flex; justify-content: center; gap: 5px; opacity: 0; animation: fade-up 0.5s 1s forwards; }
+.pre-name-ver { color: var(--accent); font-size: 0.8rem; }
+.pre-tagline { font-size: 0.7rem; color: var(--text-sec); letter-spacing: 3px; opacity: 0; animation: fade-up 0.5s 1.2s forwards; }
+.pre-bar { width: 150px; height: 2px; background: var(--border); margin: 20px auto 0; overflow: hidden; }
+.pre-fill { width: 0; height: 100%; background: var(--accent); animation: fill-bar 1.5s 0.5s cubic-bezier(0.85, 0, 0.15, 1) forwards; }
+@keyframes fill-bar { to { width: 100%; } }
+@keyframes fade-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Typewriter Effect */
+.typewriter { overflow: hidden; white-space: nowrap; display: inline-block; max-width: 0; animation: type-in 1s 1s forwards; }
+@keyframes type-in { to { max-width: 200px; } }
+
+/* Reveal Animation */
+.bento-card { animation: slideUp 0.6s var(--ease-bouncy) backwards; }
+.bento-card:nth-child(1) { animation-delay: 0.1s; }
+.bento-card:nth-child(2) { animation-delay: 0.2s; }
+.bento-card:nth-child(3) { animation-delay: 0.3s; }
+.bento-card:nth-child(4) { animation-delay: 0.4s; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
