@@ -3,125 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.H 5.1 | Personal Hub</title>
+    <title>A.H 5.1 | Adaptive Horizon</title>
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Dynamic Background -->
-    <div class="bg-wrapper">
-        <div class="aurora-orb orb-1"></div>
-        <div class="aurora-orb orb-2"></div>
-        <div class="noise-texture"></div>
-    </div>
-
-    <!-- Preloader -->
     <div id="preloader">
-        <div class="loader-content">
-            <span class="loader-text">A.H 5.1</span>
-            <div class="loader-line"></div>
+    <div class="pre-container">
+        <div class="boot-status">
+            <span class="status-line">> INITIALIZING_SYSTEM...</span>
+            <span class="status-line">> LOADING_ASSETS... [OK]</span>
+            <span class="status-line">> ESTABLISHING_ADAPTIVE_HORIZON_V5.1...</span>
+        </div>
+
+       <div class="pre-logo-box">
+            <div class="pre-text-logo" data-text="A.H 5.1">A.H 5.1</div>
+        </div>
+
+
+        <div class="pre-brand">
+            <h2 class="pre-title" data-value="ADAPTIVE HORIZON">ADAPTIVE HORIZON</h2>
+            <div class="pre-sub">SYSTEM VERSION 5.1.0_STABLE</div>
+        </div>
+
+        <div class="pre-progress-wrapper">
+            <div class="pre-progress-bar"></div>
+            <div class="pre-percentage">00%</div>
         </div>
     </div>
+</div>
 
-    <!-- Floating Navigation -->
-    <nav class="glass-nav">
-        <div class="nav-group">
-            <button class="nav-btn lang-btn active" data-lang="id">ID</button>
-            <div class="nav-divider"></div>
-            <button class="nav-btn lang-btn" data-lang="en">EN</button>
-            <div class="nav-divider"></div>
-            <button class="nav-btn lang-btn" data-lang="ms">MS</button>
+    <div class="bg-glow"></div>
+    <div class="grid-overlay"></div>
+
+    <nav class="top-nav">
+        <div class="nav-brand">
+            <span class="brand-mark">Ah</span>
+            <span class="brand-version">5.1</span>
         </div>
-        
-        <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle Theme">
-            <i class="fas fa-sun"></i>
-        </button>
+        <div class="nav-controls">
+            <div class="lang-group">
+                <button class="lang-btn active" data-lang="id">ID</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="ms">MS</button>
+            </div>
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
     </nav>
 
-    <main class="main-container">
-        <!-- Main Card: Layout akan berubah di desktop -->
-        <article class="glass-card js-tilt-card">
-            
-            <!-- Column 1: Profile Info -->
-            <section class="col-profile">
-                <header class="profile-header">
-                    <div class="profile-image-wrapper">
-                        <img src="profile picture.png" alt="A.H 5.1 Profile" class="profile-img">
-                        <div class="status-indicator"></div>
-                    </div>
-                    
-                    <h1 class="profile-name">A.H 5.1</h1>
-                    
-                    <div class="profile-badge">
-                        <i class="fas fa-code"></i>
-                        <span class="typewriter" data-i18n="tagline">Digital Creator</span>
-                    </div>
-
-                    <p id="greeting-text" class="greeting-text">Halo.</p>
-                </header>
-
-                <div class="footer-info desktop-only">
-                    <small data-i18n="copyright">© 2026 A.H 5.1</small>
+    <main class="bento-container">
+        
+        <div class="bento-card profile-card glow-effect">
+            <div class="avatar-wrapper">
+                <img src="profile picture.png" alt="A.H 5.1" class="avatar-img">
+                <div class="status-indicator">
+                    <span class="pulse"></span>
                 </div>
-            </section>
+            </div>
+            <h1 class="profile-name">A.H 5.1</h1>
+            <div class="profile-badge">
+                <i class="fas fa-terminal"></i>
+                <span class="typewriter" data-i18n="tagline">Digital Creator</span>
+            </div>
+            <p class="greeting-text" id="greeting-text"></p>
+        </div>
 
-            <!-- Column 2: Links Area -->
-            <section class="col-links">
-                <div class="scroll-area">
-                    <div class="links-grid">
-                        <a href="https://instagram.com/rfa_glng_p._a.h_5.1" target="_blank" class="link-item instagram">
-                            <div class="link-icon"><i class="fab fa-instagram"></i></div>
-                            <span class="link-text">Instagram</span>
-                            <i class="fas fa-arrow-right link-arrow"></i>
-                        </a>
-
-                        <a href="https://youtube.com/@A.H_5.1" target="_blank" class="link-item youtube">
-                            <div class="link-icon"><i class="fab fa-youtube"></i></div>
-                            <span class="link-text">YouTube</span>
-                            <i class="fas fa-arrow-right link-arrow"></i>
-                        </a>
-
-                        <a href="https://tiktok.com/@intel_uhd_graphics" target="_blank" class="link-item tiktok">
-                            <div class="link-icon"><i class="fab fa-tiktok"></i></div>
-                            <span class="link-text">TikTok</span>
-                            <i class="fas fa-arrow-right link-arrow"></i>
-                        </a>
-
-                        <a href="https://twitter.com/absurd_humor_51" target="_blank" class="link-item twitter">
-                            <div class="link-icon"><i class="fab fa-x-twitter"></i></div>
-                            <span class="link-text">Twitter / X</span>
-                            <i class="fas fa-arrow-right link-arrow"></i>
-                        </a>
-                    </div>
-
-                    <!-- Support Box -->
-                    <div class="support-area">
-                        <div class="support-text">
-                            <h3 data-i18n="support_heading">Dukung Karya</h3>
-                            <p data-i18n="support_para">Traktir kopi agar semangat.</p>
-                        </div>
-                        <a href="https://sociabuzz.com/ah51" target="_blank" class="support-btn">
-                            Sociabuzz <i class="fas fa-heart"></i>
-                        </a>
-                    </div>
+        <div class="bento-card identity-card">
+            <div class="info-item">
+                <i class="fas fa-fingerprint"></i>
+                <div>
+                    <span class="info-label">BRAND</span>
+                    <span class="info-val">ADAPTIVE HORIZON</span>
                 </div>
-
-                <!-- Footer Mobile Only -->
-                <div class="footer-info mobile-only">
-                    <img src="https://hits.sh/ah51.github.io/project-x2391.svg?style=flat-square&color=3b82f6" class="counter-badge" alt="Counter">
-                    <small data-i18n="copyright">© 2026 A.H 5.1</small>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-rocket"></i>
+                <div>
+                    <span class="info-label">ESTABLISHED</span>
+                    <span class="info-val">2020</span>
                 </div>
-            </section>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <span class="info-label">BASE</span>
+                    <span class="info-val">INDONESIA</span>
+                </div>
+            </div>
+        </div>
 
-        </article>
+        <div class="bento-card socials-card">
+            <h3 class="card-title">CONNECT</h3>
+            <div class="social-grid">
+                <a href="https://instagram.com/rfa_glng_p._a.h_5.1" target="_blank" class="social-btn ig">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://youtube.com/@A.H_5.1" target="_blank" class="social-btn yt">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://tiktok.com/@intel_uhd_graphics" target="_blank" class="social-btn tt">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                </a>
+                <a href="https://twitter.com/absurd_humor_51" target="_blank" class="social-btn tw">
+                    <i class="fab fa-x-twitter"></i>
+                    <span>X / Twitter</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="bento-card support-card pattern-bg">
+            <div class="support-content">
+                <h3 data-i18n="support_heading">Dukung Karya</h3>
+                <p data-i18n="support_para">Traktir kopi agar semangat.</p>
+                <a href="https://sociabuzz.com/ah51" target="_blank" class="cta-button">
+                    <i class="fas fa-coffee"></i>
+                    <span>Sociabuzz</span>
+                </a>
+            </div>
+        </div>
+
     </main>
+
+    <footer class="bottom-footer">
+        <img src="https://hits.sh/ah51.github.io/project-x2391.svg?style=flat-square&color=3b82f6" class="hit-badge" alt="Counter">
+        <p data-i18n="copyright">© 2026 A.H 5.1</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
