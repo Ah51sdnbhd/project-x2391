@@ -129,6 +129,29 @@ body {
 @keyframes ping { 75%, 100% { transform: scale(2); opacity: 0; } }
 
 .profile-name { font-family: var(--font-display); font-size: 2rem; font-weight: 800; letter-spacing: -1px; }
+/* Mengatur agar nama dan ikon sejajar di tengah */
+.profile-name { 
+    font-family: var(--font-display); 
+    font-size: 2rem; 
+    font-weight: 800; 
+    letter-spacing: -1px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 8px; /* Jarak antara teks dan ikon */
+}
+
+/* Gaya khusus untuk centang biru */
+.verified-badge {
+    font-size: 0.55em; /* Ukurannya dibuat lebih kecil dari teks nama */
+    color: var(--accent); /* Menggunakan warna biru tema kamu */
+    filter: drop-shadow(0 0 5px var(--glow-blob)); /* Sedikit efek nyala */
+}
+
+/* Penyesuaian ukuran di layar desktop (responsive) */
+@media (min-width: 768px) {
+    .profile-name { font-size: 2.8rem; }
+}
 .profile-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(59, 130, 246, 0.1); color: var(--accent); padding: 6px 14px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; }
 .greeting-text { color: var(--text-sec); font-size: 0.95rem; }
 
