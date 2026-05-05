@@ -184,8 +184,12 @@ body {
 .support-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--glow-blob), transparent); pointer-events: none; }
 .support-content { position: relative; z-index: 1; width: 100%; }
 .support-content p { color: var(--text-sec); font-size: 0.85rem; margin: 5px 0 15px; }
-.cta-button { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; padding: 10px 20px; border-radius: 12px; font-weight: 600; text-decoration: none; transition: 0.3s; }
-.cta-button:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 10px 20px var(--glow-blob); }
+.support-btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
+.cta-button { display: inline-flex; align-items: center; gap: 8px; color: #fff; padding: 10px 20px; border-radius: 12px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+.cta-sociabuzz { background: #00ff00; color: #111; }
+.cta-sociabuzz:hover { background: #00cc00; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,255,0,0.3); }
+.cta-saweria { background: #faae2b; color: #111; }
+.cta-saweria:hover { background: #e09a1a; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(250,174,43,0.35); }
 
 /* Footer */
 .bottom-footer { text-align: center; padding: 2rem; color: var(--text-sec); font-size: 0.85rem; }
