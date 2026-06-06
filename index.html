@@ -2,109 +2,98 @@
 <html lang="id" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.H 5.1 | Adaptive Horizon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <title>test</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <div id="preloader">
-    <div class="pre-container">
-        <div class="boot-status">
-            <span class="status-line">> INITIALIZING_SYSTEM...</span>
-            <span class="status-line">> LOADING_ASSETS... [OK]</span>
-            <span class="status-line">> ESTABLISHING_ADAPTIVE_HORIZON_V5.1...</span>
-        </div>
-
-       <div class="pre-logo-box">
-            <div class="pre-text-logo" data-text="A.H 5.1">A.H 5.1</div>
-        </div>
-
-
-        <div class="pre-brand">
-            <h2 class="pre-title" data-value="ADAPTIVE HORIZON">ADAPTIVE HORIZON</h2>
-            <div class="pre-sub">SYSTEM VERSION 5.1.0_STABLE</div>
-        </div>
-
-        <div class="pre-progress-wrapper">
-            <div class="pre-progress-bar"></div>
-            <div class="pre-percentage">00%</div>
+        <div class="pre-container">
+            <div class="apple-loader-box">
+                <div class="apple-spinner"></div>
+                <div class="pre-text-logo">Ah</div>
+            </div>
+            <div class="pre-brand">
+                <h2 class="pre-title">Adaptive Horizon</h2>
+                <div class="pre-sub">SYSTEM CORE v5.1</div>
+            </div>
+            <div class="pre-progress-wrapper">
+                <div class="pre-progress-bar"></div>
+                <div class="pre-percentage">00%</div>
+            </div>
         </div>
     </div>
-</div>
 
-    <div class="bg-glow"></div>
-    <div class="grid-overlay"></div>
-
-    <nav class="top-nav">
-        <div class="nav-brand">
-            <span class="brand-mark">Ah</span>
-            <span class="brand-version">5.1</span>
-        </div>
-        <div class="nav-controls">
-            <div class="lang-group">
-                <button class="lang-btn active" data-lang="id">ID</button>
-                <button class="lang-btn" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="ms">MS</button>
+    <header class="top-nav">
+        <div class="nav-container">
+            <div class="brand-signature">
+                <span class="sig-main">A.H</span>
+                <span class="sig-ver">5.1</span>
             </div>
-            <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
-                <i class="fas fa-sun"></i>
-            </button>
+            <div class="nav-controls">
+                <div class="controls-group">
+                    <button class="lang-btn active" data-lang="id">ID</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ms">MS</button>
+                </div>
+                <div class="controls-group">
+                    <button id="theme-toggle" class="theme-btn" aria-label="Toggle Interface Theme">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-    </nav>
+    </header>
 
     <main class="bento-container">
         
-        <div class="bento-card profile-card glow-effect">
+        <div class="bento-card profile-card">
             <div class="avatar-wrapper">
-                <img src="profile picture.png" alt="A.H 5.1" class="avatar-img">
-                <div class="status-indicator">
-                    <span class="pulse"></span>
+                <img src="profile picture.png" alt="Profile Picture" class="profile-avatar">
+                <div class="status-dot"></div>
+            </div>
+            <div class="profile-info">
+                <div id="greeting-text" class="greeting-bubble">SYSTEM ACTIVE</div>
+                <h1 class="profile-name">
+                Adaptive Horizon 5.1
+                <i class="fas fa-circle-check verified-badge" title="Root Access Verified"></i>
+                </h1>
+                <div class="typewriter-container">
+                    <i class="fas fa-terminal"></i>
+                    <span class="typewriter">Tech Enthusiast</span>
                 </div>
             </div>
-           <h1 class="profile-name">
-    A.H 5.1
-    <i class="fas fa-circle-check verified-badge" title="Verified Official"></i>
-</h1>
-            <div class="profile-badge">
-                <i class="fas fa-terminal"></i>
-                <span class="typewriter" data-i18n="tagline">Digital Creator</span>
-            </div>
-            <p class="greeting-text" id="greeting-text"></p>
         </div>
 
         <div class="bento-card identity-card">
             <div class="info-item">
-                <i class="fas fa-fingerprint"></i>
+                <div class="info-icon"><i class="fas fa-fingerprint"></i></div>
                 <div>
-                    <span class="info-label">BRAND</span>
-                    <span class="info-val">ADAPTIVE HORIZON</span>
+                    <span class="info-label">BRAND CORE</span>
+                    <span class="info-val">ADAPTIVE HORIZON 5.1</span>
                 </div>
             </div>
             <div class="info-item">
-                <i class="fas fa-rocket"></i>
+                <div class="info-icon"><i class="fas fa-rocket"></i></div>
                 <div>
-                    <span class="info-label">ESTABLISHED</span>
+                    <span class="info-label">SINCE</span>
                     <span class="info-val">2020</span>
                 </div>
             </div>
             <div class="info-item">
-                <i class="fas fa-map-marker-alt"></i>
+                <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                 <div>
-                    <span class="info-label">BASE</span>
+                    <span class="info-label">BASE ON</span>
                     <span class="info-val">INDONESIA</span>
                 </div>
             </div>
         </div>
 
         <div class="bento-card socials-card">
-            <h3 class="card-title">CONNECT</h3>
+            <h3 class="card-title">Follow me on</h3>
             <div class="social-grid">
                 <a href="https://instagram.com/rfa_glng_p._a.h_5.1" target="_blank" class="social-btn ig">
                     <i class="fab fa-instagram"></i>
@@ -120,21 +109,21 @@
                 </a>
                 <a href="https://twitter.com/absurd_humor_51" target="_blank" class="social-btn tw">
                     <i class="fab fa-x-twitter"></i>
-                    <span>X / Twitter</span>
+                    <span>Twitter</span>
                 </a>
             </div>
         </div>
 
-        <div class="bento-card support-card pattern-bg">
+        <div class="bento-card support-card">
             <div class="support-content">
                 <h3 data-i18n="support_heading">Dukung Karya</h3>
-                <p data-i18n="support_para">Traktir kopi agar semangat.</p>
+                <p data-i18n="support_para" class="support-para">Traktir kopi agar semangat berkarya.</p>
                 <div class="support-btn-group">
-                    <a href="https://sociabuzz.com/ah51" target="_blank" class="cta-button cta-sociabuzz">
+                    <a href="https://sociabuzz.com/ah51" target="_blank" class="cta-button music-style">
                         <i class="fas fa-coffee"></i>
                         <span>Sociabuzz</span>
                     </a>
-                    <a href="https://saweria.co/Absurdhumor51" target="_blank" class="cta-button cta-saweria">
+                    <a href="https://saweria.co/Absurdhumor51" target="_blank" class="cta-button glass-accent-style">
                         <i class="fas fa-heart"></i>
                         <span>Saweria</span>
                     </a>
@@ -145,8 +134,8 @@
     </main>
 
     <footer class="bottom-footer">
-        <img src="https://hits.sh/ah51.github.io/project-x2391.svg?style=flat-square&color=3b82f6" class="hit-badge" alt="Counter">
-        <p data-i18n="copyright">© 2026 A.H 5.1</p>
+        <img src="https://hits.sh/ah51.github.io/project-x2391.svg?style=flat-square&color=3b82f6" class="hit-badge" alt="Traffic Counter">
+        <p data-i18n="copyright">©A.H 5.1 · All Rights Reserved</p>
     </footer>
 
     <script src="script.js"></script>
