@@ -9,30 +9,30 @@ const App = (() => {
 
     const TRANSLATIONS = {
         id: {
-            tagline: "Digital Creator",
+            tagline: "peminat teknologi",
             support_heading: "Dukung Karya",
             support_para: "Traktir kopi agar semangat berkarya.",
-            copyright: "© {year} A.H 5.1 · Hak Cipta Dilindungi",
+            copyright: "© A.H 5.1 · Hak Cipta Dilindungi",
             greet_morning: "Selamat Pagi!",
-            greet_noon: "Selamat Siang — jangan lupa istirahat.",
+            greet_noon: "Selamat Siang!",
             greet_afternoon: "Selamat Sore.",
-            greet_night: "Selamat Malam, waktunya rehat."
+            greet_night: "Selamat Malam!"
         },
         en: {
-            tagline: "Digital Creator",
+            tagline: "Tech Enthusiast",
             support_heading: "Support My Work",
             support_para: "Buy me a coffee to keep creating.",
-            copyright: "© {year} A.H 5.1 · All Rights Reserved",
+            copyright: "© A.H 5.1 · All Rights Reserved",
             greet_morning: "Good Morning!",
             greet_noon: "Good Afternoon!",
             greet_afternoon: "Good Afternoon!",
             greet_night: "Good Evening!"
         },
         ms: {
-            tagline: "Pencipta Digital",
+            tagline: "peminat teknologi",
             support_heading: "Sokong Saya",
             support_para: "Belanja kopi untuk terus berkarya.",
-            copyright: "© {year} A.H 5.1 · Hak Cipta Terpelihara",
+            copyright: "© A.H 5.1 · Hak Cipta Terpelihara",
             greet_morning: "Selamat Pagi!",
             greet_noon: "Selamat Tengahari!",
             greet_afternoon: "Selamat Petang!",
@@ -52,50 +52,35 @@ const App = (() => {
         translatables: document.querySelectorAll('[data-i18n]')
     };
 
-    // --- Preloader Logic ---
-   // --- Preloader Enhanced ---
+    // --- Preloader Driver ---
     const Loader = {
         hide() {
             const percentEl = document.querySelector('.pre-percentage');
-            const titleEl = document.querySelector('.pre-title');
-            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const progressBar = document.querySelector('.pre-progress-bar');
             let count = 0;
 
-            // 1. Counter Animation
             const counterInterval = setInterval(() => {
                 count++;
-                if(percentEl) percentEl.textContent = count.toString().padStart(2, '0') + "%";
-                if (count >= 100) clearInterval(counterInterval);
-            }, 15);
-
-            // 2. Text Scramble Effect pada Judul
-            let iteration = 0;
-            const originalText = titleEl.dataset.value;
-            const scrambleInterval = setInterval(() => {
-                titleEl.innerText = titleEl.innerText
-                    .split("")
-                    .map((letter, index) => {
-                        if(index < iteration) return originalText[index];
-                        return letters[Math.floor(Math.random() * 26)];
-                    })
-                    .join("");
+                if (percentEl) percentEl.textContent = count.toString().padStart(2, '0') + "%";
+                if (progressBar) progressBar.style.width = count + "%";
                 
-                if(iteration >= originalText.length) clearInterval(scrambleInterval);
-                iteration += 1 / 3;
-            }, 30);
-
-            // 3. Hide Preloader
-            window.addEventListener('load', () => {
+                if (count >= 100) {
+                    clearInterval(counterInterval);
+                    this.dismiss();
+                }
+            }, 12);
+        },
+        dismiss() {
+            if (DOM.preloader) {
+                DOM.preloader.classList.add('preloader-hidden');
                 setTimeout(() => {
-                    DOM.preloader.classList.add('preloader-hidden');
-                    // Tambahkan sedikit delay sebelum dihapus dari DOM
-                    setTimeout(() => DOM.preloader.remove(), 800);
-                }, 2200); // Waktu total simulasi booting
-            });
+                    if (DOM.preloader) DOM.preloader.remove();
+                }, 800);
+            }
         }
     };
 
-    // --- Greeting based on time ---
+    // --- Greeting System ---
     const getGreeting = (lang) => {
         const h = new Date().getHours();
         const t = TRANSLATIONS[lang];
@@ -105,7 +90,7 @@ const App = (() => {
         return t.greet_night;
     };
 
-    // --- Language Management ---
+    // --- Language Controller ---
     const Content = {
         init() {
             this.apply(STATE.lang);
@@ -119,22 +104,12 @@ const App = (() => {
             localStorage.setItem('ah_lang', lang);
             DOM.html.setAttribute('lang', lang);
 
-            // Update active state di tombol
             DOM.langBtns.forEach(btn =>
                 btn.classList.toggle('active', btn.dataset.lang === lang)
             );
 
             const data = TRANSLATIONS[lang];
 
-            // Animasi ulang typewriter text
-            if(DOM.typewriter) {
-                DOM.typewriter.style.animation = 'none';
-                DOM.typewriter.textContent = data.tagline;
-                void DOM.typewriter.offsetWidth; // Trigger reflow
-                DOM.typewriter.style.animation = 'type-in 1s forwards';
-            }
-
-            // Ganti teks elemen lainnya
             DOM.translatables.forEach(el => {
                 const key = el.dataset.i18n;
                 if (!data[key]) return;
@@ -143,26 +118,27 @@ const App = (() => {
                     : data[key];
             });
 
-            // Update sapaan waktu
-            if(DOM.greeting) DOM.greeting.textContent = getGreeting(lang);
+            if (DOM.greeting) DOM.greeting.textContent = getGreeting(lang);
         }
     };
 
-    // --- Theme Management ---
+    // --- Theme Controller ---
     const Theme = {
         init() {
             this.apply(STATE.theme);
-            DOM.themeToggle.addEventListener('click', () => {
-                this.apply(STATE.theme === 'dark' ? 'light' : 'dark');
-            });
+            if (DOM.themeToggle) {
+                DOM.themeToggle.addEventListener('click', () => {
+                    this.apply(STATE.theme === 'dark' ? 'light' : 'dark');
+                });
+            }
         },
         apply(theme) {
             STATE.theme = theme;
             localStorage.setItem('ah_theme', theme);
             DOM.html.setAttribute('data-theme', theme);
-            
-            // Ganti icon matahari/bulan
-            DOM.themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            if (DOM.themeIcon) {
+                DOM.themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
         }
     };
 
